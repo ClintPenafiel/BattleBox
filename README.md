@@ -1,3 +1,3 @@
 # BattleBox
 CS Senior Project
-By: Kyro ______, Austin _____, Clint Penafiel
+By: Kyro Carolino, Austin Nguyen, Clint Penafiel
