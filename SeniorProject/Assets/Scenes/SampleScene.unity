@@ -6975,10 +6975,11 @@ MonoBehaviour:
   mainCamera: {fileID: 519420031}
   resourceNode: {fileID: 8148687777916893203, guid: 0b3152df9eef3d046b866caaaf022257, type: 3}
   resourceNodeAmount: 5
+  characterPrefab: {fileID: 1000013034572668, guid: 389c7e1a1dabb4e1e917001420b89c9a, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 519420032}
-  - {fileID: 982188066}
   - {fileID: 1278262889}
+  - {fileID: 982188066}

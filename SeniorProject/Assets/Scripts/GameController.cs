@@ -8,11 +8,15 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject resourceNode;
     [SerializeField] private int resourceNodeAmount;
     // Start is called before the first frame update
+    [SerializeField] private GameObject characterPrefab; // Reference to the character prefab in the Unity editor.
+
     void Start()
     {
         var height = mainCamera.orthographicSize;   // set height using the camera orthographic size
         var width = mainCamera.aspect * height;     // set width using camera aspect ratio and height
         InitializeResourceNodes(width, height);
+                // Example: Spawn a character at a specific position when the game starts.
+        SpawnCharacter(new Vector3(-8, 0, 0));
     }
 
     private void InitializeResourceNodes(float width, float height)
@@ -23,6 +27,12 @@ public class GameController : MonoBehaviour
             Instantiate(resourceNode, new Vector3(Random.Range(-width, width), Random.Range(-height, height)),
                 Quaternion.identity);
         }
+    }
+    // Function to spawn a character at a given position.
+    private void SpawnCharacter(Vector3 spawnPosition)
+    {
+        Debug.Log("Character spawned at position: " + spawnPosition);
+    Instantiate(characterPrefab, spawnPosition, Quaternion.identity);
     }
 
     // Update is called once per frame
