@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class BaseController : MonoBehaviour
 {
-    [SerializeField] private int gold = 0;
+    [SerializeField] private int gold;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        gold = 0;
     }
 
     // Update is called once per frame
@@ -18,6 +18,11 @@ public class BaseController : MonoBehaviour
         
     }
 
+    public int GetGold()
+    {
+        return gold;
+    }
+    
     public void AddGold(int num)
     {
         gold += num;

@@ -417,7 +417,7 @@ MonoBehaviour:
   goldResourceLayer:
     serializedVersion: 2
     m_Bits: 8
-  targetGoldResource: {fileID: 476877266340126804, guid: 0b3152df9eef3d046b866caaaf022257, type: 3}
+  target: {fileID: 476877266340126804, guid: 0b3152df9eef3d046b866caaaf022257, type: 3}
 --- !u!114 &4269778517494932860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -430,7 +430,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82152b026d915954f9f4d98b4bf328f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  carryCapacity: 100
+  carryCapacity: 10
   goldCarried: 0
   gatherSpeed: 1
   depositSpeed: 1

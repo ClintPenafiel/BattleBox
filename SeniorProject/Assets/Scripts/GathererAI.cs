@@ -10,7 +10,7 @@ public class GathererAI : MonoBehaviour
     public float collectRange = 1.0f;   //Range of which the unit gathers gold
     public float detectRange = 50.0f;   //Range of which the unit can detect gold
     public LayerMask goldResourceLayer; //Layer containing gold resources
-    public Transform targetGoldResource;//Reference to currently targeted gold resource
+    public Transform target;//Reference to currently target
     private Rigidbody2D rigBod2D;       //Component for moving
     
     // Start is called before the first frame update
@@ -25,20 +25,38 @@ public class GathererAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (targetGoldResource != null) //Check for user targeted gold
+        if (target != null) //Check for target
         {
             //Target distance from unit and target gold
-            float distance = Vector2.Distance(transform.position, targetGoldResource.position);
+            float distance = Vector2.Distance(transform.position, target.position);
 
             if (distance <= collectRange) //Collect gold if within range
             {
-                collectGold();
-                findClosestGoldResource(); //Find a new gold resource
+                if (collectGold())
+                {
+                    findClosestGoldResource(); //Find a new gold resource
+                }
+                else
+                {
+                    if (!gathererController.depositState())
+                    {
+                        Coroutine depositing = StartCoroutine(gathererController.DepositGold());
+                        if (depositing != null) // if depositing is not done
+                        {
+                            target = gathererController.baseTransform(); // set target to base
+                        }
+                        else
+                        {
+                            Debug.Log("done depositing");
+                            findClosestGoldResource(); //Find a new gold resource
+                        }
+                    }
+                }
             }
             else
             {
-                //Move towards target gold resource
-                Vector2 moveDirection = (targetGoldResource.position - transform.position).normalized;
+                //Move towards target
+                Vector2 moveDirection = (target.position - transform.position).normalized;
                 rigBod2D.velocity = moveDirection * speed;
             }
         }
@@ -48,14 +66,20 @@ public class GathererAI : MonoBehaviour
         }
     }
 
-    private void collectGold()
+    private bool collectGold() // returns true if gold needs to be collected/is being collected, false otherwise
     {
-        StartCoroutine(gathererController.GatherGold(targetGoldResource));
-        // TODO move the gatherer to the base and deposit gold
-        // StartCoroutine(gathererController.DepositGold());
+        if (target == gathererController.baseTransform() || gathererController.depositState()) return false;
+        if (gathererController.gatherState()) return true;
+        Coroutine gathering = StartCoroutine(gathererController.GatherGold(target));
+        if (gathering == null)
+        {
+            Debug.Log("done gathering");
+        }
+        return gathering != null;
+
     }
 
-    private void findClosestGoldResource()
+    private void findClosestGoldResource() // sets target to closest gold resource
     {
         Collider2D[] goldResources = Physics2D.OverlapCircleAll(transform.position, detectRange, goldResourceLayer);
 
@@ -73,6 +97,6 @@ public class GathererAI : MonoBehaviour
             }
         }
 
-        targetGoldResource = closestGold;
+        target = closestGold;
     }
 }

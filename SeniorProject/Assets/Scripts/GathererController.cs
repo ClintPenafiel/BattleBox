@@ -22,12 +22,16 @@ public class GathererController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+    }
+
+    public bool gatherState()
+    {
+        return isGathering;
     }
 
     public IEnumerator GatherGold(Transform targetGoldResource)
     {
-        while (goldCarried != carryCapacity)
+        while (goldCarried < carryCapacity)
         {
             Debug.Log($"gatherer has {goldCarried} gold");
             if (!isGathering && goldCarried < carryCapacity)
@@ -42,22 +46,42 @@ public class GathererController : MonoBehaviour
             }
             yield return null;
         }
+        
+    }
+    
+    public bool depositState()
+    {
+        return isDepositing;
     }
 
     public IEnumerator DepositGold()
     {
-        while (true)
+        // yield return new WaitUntil(nearBase);
+        while (goldCarried > 0)
         {
             if (!isDepositing && goldCarried > 0)
             {
                 isDepositing = true;
                 yield return new WaitForSeconds(depositSpeed);
-                mainBase.gameObject.GetComponent<BaseController>().AddGold(goldCarried);
+                BaseController baseScript = mainBase.gameObject.GetComponent<BaseController>();
+                baseScript.AddGold(goldCarried);
+                Debug.Log($"base has {baseScript.GetGold()} gold");
                 goldCarried = 0;
                 isDepositing = false;
             }
             yield return null;
         }
     }
+    
+    public Transform baseTransform()
+    {
+        return mainBase;
+    }
 
+    private bool nearBase()
+    {
+        float distance = Vector2.Distance(transform.position, mainBase.position);
+        return distance <= 1;
+    }
+    
 }
