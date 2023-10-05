@@ -4,21 +4,19 @@ using UnityEngine;
 
 public class GathererController : MonoBehaviour
 {
-    [SerializeField] private ResourceNodeController resourceNode;
     [SerializeField] private int carryCapacity = 10;
+    [SerializeField] private int goldCarried;
     [SerializeField] private int gatherSpeed = 1;
     [SerializeField] private int depositSpeed = 1;
     [SerializeField] private Transform mainBase;
-
-    private int goldCarried = 0;
+    
     private bool isGathering = false;
     private bool isDepositing = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine("GatherGold");
-        StartCoroutine("DepositGold");
+        
     }
 
     // Update is called once per frame
@@ -27,15 +25,18 @@ public class GathererController : MonoBehaviour
         
     }
 
-    private IEnumerator GatherGold()
+    public IEnumerator GatherGold(Transform targetGoldResource)
     {
-        while (true)
+        while (goldCarried != carryCapacity)
         {
+            Debug.Log($"gatherer has {goldCarried} gold");
             if (!isGathering && goldCarried < carryCapacity)
             {
                 isGathering = true;
                 yield return new WaitForSeconds(gatherSpeed);
-                int goldGathered = resourceNode.SubtractGold(carryCapacity - goldCarried);
+                ResourceNodeController resourceScript =
+                    targetGoldResource.gameObject.GetComponent<ResourceNodeController>();
+                int goldGathered = resourceScript.SubtractGold(carryCapacity - goldCarried);
                 goldCarried += goldGathered;
                 isGathering = false;
             }
@@ -43,7 +44,7 @@ public class GathererController : MonoBehaviour
         }
     }
 
-    private IEnumerator DepositGold()
+    public IEnumerator DepositGold()
     {
         while (true)
         {
@@ -51,11 +52,12 @@ public class GathererController : MonoBehaviour
             {
                 isDepositing = true;
                 yield return new WaitForSeconds(depositSpeed);
-                mainBase.GetComponent<BaseController>().AddGold(goldCarried);
+                mainBase.gameObject.GetComponent<BaseController>().AddGold(goldCarried);
                 goldCarried = 0;
                 isDepositing = false;
             }
             yield return null;
         }
     }
+
 }

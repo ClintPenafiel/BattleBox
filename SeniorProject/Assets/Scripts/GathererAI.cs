@@ -5,10 +5,11 @@ using UnityEngine.AI;
 
 public class GathererAI : MonoBehaviour
 {
-
-    public float speed = 5f;            //Movement speed if the unit
+    [SerializeField] private GathererController gathererController;
+    public float speed = 5f;            //Movement speed of the unit
     public float collectRange = 1.0f;   //Range of which the unit gathers gold
-    public LayerMask goldResourceLayer; //Layer containing gold, create a new layer for the gold resources
+    public float detectRange = 50.0f;   //Range of which the unit can detect gold
+    public LayerMask goldResourceLayer; //Layer containing gold resources
     public Transform targetGoldResource;//Reference to currently targeted gold resource
     private Rigidbody2D rigBod2D;       //Component for moving
     
@@ -49,13 +50,14 @@ public class GathererAI : MonoBehaviour
 
     private void collectGold()
     {
-        //Add logic here for collecting gold, for now it just destroys gold
-        Destroy(targetGoldResource.gameObject);
+        StartCoroutine(gathererController.GatherGold(targetGoldResource));
+        // TODO move the gatherer to the base and deposit gold
+        // StartCoroutine(gathererController.DepositGold());
     }
 
     private void findClosestGoldResource()
     {
-        Collider2D[] goldResources = Physics2D.OverlapCircleAll(transform.position, collectRange, goldResourceLayer);
+        Collider2D[] goldResources = Physics2D.OverlapCircleAll(transform.position, detectRange, goldResourceLayer);
 
         float closestDistance = Mathf.Infinity;
         Transform closestGold = null;
