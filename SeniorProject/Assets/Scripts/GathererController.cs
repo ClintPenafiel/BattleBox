@@ -56,7 +56,6 @@ public class GathererController : MonoBehaviour
 
     public IEnumerator DepositGold()
     {
-        // yield return new WaitUntil(nearBase);
         while (goldCarried > 0)
         {
             if (!isDepositing && goldCarried > 0)
@@ -76,12 +75,6 @@ public class GathererController : MonoBehaviour
     public Transform baseTransform()
     {
         return mainBase;
-    }
-
-    private bool nearBase()
-    {
-        float distance = Vector2.Distance(transform.position, mainBase.position);
-        return distance <= 1;
     }
     
 }
