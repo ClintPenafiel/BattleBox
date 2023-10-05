@@ -32,6 +32,7 @@ public class ResourceNodeController : MonoBehaviour
     {
         // subtracts gold amount from total gold at the resource node
         int difference = gold - num;
+        gold = Mathf.Clamp(gold - num, 0, maxGold);
         if (difference < 0) return num + difference;
         return num;
     }
