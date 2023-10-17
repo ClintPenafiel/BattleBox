@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -8013693165891514481}
   m_Layer: 3
   m_Name: Resource Node
-  m_TagString: Resource
+  m_TagString: GoldResource
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -201,3 +201,4 @@ MonoBehaviour:
   gold: 0
   maxGold: 100
   goldRegenerationPerSecond: 1
+  goldManager: {fileID: 0}

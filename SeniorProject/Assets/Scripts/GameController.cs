@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] private GameObject characterPrefab; // Reference to the character prefab in the Unity editor.
     [SerializeField] private GameObject basePrefab; // Reference to the base prefab in the Unity editor.
+    
     void Start()
     {
         var height = mainCamera.orthographicSize;   // set height using the camera orthographic size

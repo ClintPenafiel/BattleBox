@@ -7,10 +7,14 @@ public class ResourceNodeController : MonoBehaviour
     [SerializeField] private int gold = 0;
     [SerializeField] private int maxGold = 100;
     [SerializeField] private int goldRegenerationPerSecond = 1;
+    
+public GoldManager goldManager;
+
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine("GenerateGold");
+        goldManager = FindObjectOfType<GoldManager>();
     }
 
     // Update is called once per frame
@@ -34,6 +38,8 @@ public class ResourceNodeController : MonoBehaviour
         int difference = gold - num;
         gold = Mathf.Clamp(gold - num, 0, maxGold);
         if (difference < 0) return num + difference;
+
+        goldManager.currentGold += num;
         return num;
     }
 }

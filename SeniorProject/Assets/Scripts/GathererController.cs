@@ -56,8 +56,8 @@ public class GathererController : MonoBehaviour
 
     public IEnumerator DepositGold()
     {
-        while (goldCarried > 0)
-        {
+        //while (goldCarried > 0)
+        //{
             if (!isDepositing && goldCarried > 0)
             {
                 isDepositing = true;
@@ -68,9 +68,9 @@ public class GathererController : MonoBehaviour
                 goldCarried = 0;
                 isDepositing = false;
             }
-            yield return null;
+            //yield return null;
         }
-    }
+    
     
     public Transform baseTransform()
     {
