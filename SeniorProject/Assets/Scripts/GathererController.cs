@@ -54,25 +54,20 @@ public class GathererController : MonoBehaviour
         return isDepositing;
     }
 
-    public IEnumerator DepositGold()
+    public IEnumerator DepositGold() //this is where the gold is added to the base from the gatherer when it reaches the base with gold it should update the gold text, and add the gold to the base 
     {
         while (goldCarried > 0)
         {
-            if (!isDepositing)
+            if (!isDepositing && goldCarried > 0)
             {
                 isDepositing = true;
                 yield return new WaitForSeconds(depositSpeed);
-                BaseController baseScript = mainBase.gameObject.GetComponent<BaseController>();
-                baseScript.AddGold(goldCarried);
-                Debug.Log($"base has {baseScript.GetGold()} gold");
+                BaseController.Instance.AddGold(carryCapacity);
+                Debug.Log($"base has {BaseController.Instance.GetGold()} gold");
                 goldCarried = 0;
                 isDepositing = false;
             }
-            if (goldCarried == 0)
-            {
-                isDepositing = false;
-            }
-            //yield return null;
+            yield return null;
         }
     }
     
