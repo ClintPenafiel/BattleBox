@@ -7,7 +7,8 @@ public class GathererAI : MonoBehaviour
 {
     [SerializeField] private GathererController gathererController;
     public float speed = 5f;            //Movement speed of the unit
-    public float collectRange = 1.0f;   //Range of which the unit gathers gold
+    //public float collectRange = 1.0f;   //Range of which the unit gathers gold
+    public float stopDistance = 0.5f;   //Distance to stop when collecting gold
     public float detectRange = 50.0f;   //Range of which the unit can detect gold
     public LayerMask goldResourceLayer; //Layer containing gold resources
     public Transform target;//Reference to currently target
@@ -30,8 +31,10 @@ public class GathererAI : MonoBehaviour
             //Target distance from unit and target gold
             float distance = Vector2.Distance(transform.position, target.position);
 
-            if (distance <= collectRange) //Collect gold if within range
+            if (distance <= stopDistance) //Collect gold if within range
             {
+                rigBod2D.velocity = Vector2.zero; //Stop moving when collecting gold at node
+                
                 if (collectGold())
                 {
                     findClosestGoldResource(); //Find a new gold resource
