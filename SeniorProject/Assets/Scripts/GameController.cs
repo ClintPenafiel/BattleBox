@@ -10,6 +10,8 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] private GameObject characterPrefab; // Reference to the character prefab in the Unity editor.
     [SerializeField] private GameObject basePrefab; // Reference to the base prefab in the Unity editor.
+    //GoldManager reference
+    private GoldManager goldManager;
     
     void Start()
     {
@@ -25,6 +27,8 @@ public class GameController : MonoBehaviour
     Debug.Log("Base spawned at position: " + spawnPosition);
     Instantiate(basePrefab, spawnPosition, Quaternion.identity);
 }
+    //function to initialize gold manager
+
     private void InitializeResourceNodes(float width, float height)
     {
         // Initialize Resource Nodes at random locations on the map
@@ -40,7 +44,6 @@ public class GameController : MonoBehaviour
         Debug.Log("Character spawned at position: " + spawnPosition);
     Instantiate(characterPrefab, spawnPosition, Quaternion.identity);
     }
-
     // Update is called once per frame
     void Update()
     {

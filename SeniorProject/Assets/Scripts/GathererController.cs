@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GathererController : MonoBehaviour
 {
-    [SerializeField] private int carryCapacity = 10;
+    [SerializeField] private int carryCapacity = 9;
     [SerializeField] private int goldCarried;
     [SerializeField] private int gatherSpeed = 1;
     [SerializeField] private int depositSpeed = 1;
@@ -62,7 +62,7 @@ public class GathererController : MonoBehaviour
             {
                 isDepositing = true;
                 yield return new WaitForSeconds(depositSpeed);
-                BaseController.Instance.AddGold(carryCapacity);
+                BaseController.Instance.AddGold(goldCarried);
                 Debug.Log($"base has {BaseController.Instance.GetGold()} gold");
                 goldCarried = 0;
                 isDepositing = false;

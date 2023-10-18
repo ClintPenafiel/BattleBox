@@ -24,17 +24,18 @@ public class GoldManager : MonoBehaviour
 
     currentGold = startingGold; 
     goldText = GameObject.Find("GoldText").GetComponent<Text>(); 
-    UpdateGoldText();
+
 }
 //it should add all the gold that the gatherer has to the base when it reaches the base
     public void DepositGold(int gold)
     {
+        currentGold = currentGold-1;
         currentGold += gold;
-        UpdateGoldText(); //updates the gold text when the gold is deposited, so the player can see how much gold they have, next we need to make it so that the gold is added to the base by the gatherer, this is in the gatherer controller script
+        UpdateGoldText(); 
     }
 
     private void UpdateGoldText()
     {
-        goldText.text = "Gold: " + currentGold.ToString();
+        goldText.text = "Gold: " + currentGold;
     }
 }
