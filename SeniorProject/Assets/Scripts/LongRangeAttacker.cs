@@ -11,7 +11,7 @@ public class LongRangeAttacker : MonoBehaviour
     [SerializeField] private int attacksPerSecond;
     [SerializeField] private int attackRange;
     [SerializeField] private int projectileSpeed;
-
+    [SerializeField] private float projectileYOffset;
     [SerializeField] public LayerMask targetLayer;
     private bool isAttacking;
     private float detectRange = 50.0f;   //Range of which the unit can detect
@@ -32,10 +32,13 @@ public class LongRangeAttacker : MonoBehaviour
             //Target distance from unit and target
             float distance = Vector2.Distance(transform.position, target.position);
 
-            while (distance <= attackRange) //Attack if within range
+            if (distance <= attackRange) //Attack if within range
             {
                 Debug.Log($"attacking {target}");
                 attack();
+            } else
+            {
+                Debug.Log("target out of range");
             }
         }
         else
@@ -48,7 +51,11 @@ public class LongRangeAttacker : MonoBehaviour
     {
         if (!isAttacking)
         {
-            GameObject launched_projectile = Instantiate(projectile, transform.position, Quaternion.identity);
+            var position = transform.position;
+            position.y += projectileYOffset;
+            Vector3 angle = position - target.position;
+            angle.z = Mathf.Rad2Deg * (Mathf.Atan2(angle.y, angle.x)) + 90;
+            GameObject launched_projectile = Instantiate(projectile, position, Quaternion.Euler(0, 0, angle.z));
             launched_projectile.GetComponent<ProjectileController>().Launch(target, projectileSpeed);
             isAttacking = true;
             StartCoroutine("attackCooldown");

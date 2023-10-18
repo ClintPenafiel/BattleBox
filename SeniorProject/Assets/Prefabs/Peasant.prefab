@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4000010464396976}
   - component: {fileID: 95000013227593822}
   - component: {fileID: -6244866400357796208}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Peasant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,8 @@ MonoBehaviour:
   strength: 0
   attacksPerSecond: 1
   attackRange: 1000
-  projectileSpeed: 1
+  projectileSpeed: 3
+  projectileYOffset: 0.7
   targetLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -87,7 +88,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4000013509728182}
   - component: {fileID: 212000013063219618}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Back leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -171,7 +172,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4000012222275596}
   - component: {fileID: 212000013236170232}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Front leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -255,7 +256,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4000011597461332}
   - component: {fileID: 212000013552290778}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -339,7 +340,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4000010616645484}
   - component: {fileID: 212000013402081082}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: bow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -423,7 +424,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4000012882303986}
   - component: {fileID: 212000012153660448}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -512,7 +513,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4000012858508312}
   - component: {fileID: 212000013144291688}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -596,7 +597,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4000010962383484}
   - component: {fileID: 212000010422911958}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Back arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -681,7 +682,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4000010281675896}
   - component: {fileID: 212000012516139366}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Front arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}

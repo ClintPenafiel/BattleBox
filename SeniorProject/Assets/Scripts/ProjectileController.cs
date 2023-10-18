@@ -26,7 +26,6 @@ public class ProjectileController : MonoBehaviour
 
     public void Launch(Transform target, int speed)
     {
-        // FromToRotation(Vector3.zero, transform.position)
         moveDirection = (target.position - transform.position).normalized;
         projectileSpeed = speed;
     }
