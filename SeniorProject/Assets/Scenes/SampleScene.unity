@@ -178,7 +178,7 @@ Camera:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1.63
+    width: 1
     height: 0.97
   near clip plane: 0.3
   far clip plane: 1000
@@ -7194,6 +7194,7 @@ MonoBehaviour:
   resourceNodeAmount: 5
   characterPrefab: {fileID: 1000013034572668, guid: 389c7e1a1dabb4e1e917001420b89c9a, type: 3}
   basePrefab: {fileID: 3321941528205386242, guid: 4dd8406cd1b40314fbc380f7f28c69ff, type: 3}
+  minDistanceToBase: 5
 --- !u!1 &2107662014
 GameObject:
   m_ObjectHideFlags: 0

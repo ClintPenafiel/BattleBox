@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject basePrefab; // Reference to the base prefab in the Unity editor.
     //GoldManager reference
     private GoldManager goldManager;
+    [SerializeField] private float minDistanceToBase = 10f; // Minimum distance between a resource node and the base. the smaller the number the closer the resource node will be to the base
     
     void Start()
     {
@@ -29,15 +30,20 @@ public class GameController : MonoBehaviour
 }
     //function to initialize gold manager
 
-    private void InitializeResourceNodes(float width, float height)
+private void InitializeResourceNodes(float width, float height)
+{
+    // Initialize Resource Nodes at random locations in a rectangular area
+    for (int i = 0; i < resourceNodeAmount; i++)
     {
-        // Initialize Resource Nodes at random locations on the map
-        for (int i = 0; i < resourceNodeAmount; i++)
+        Vector3 spawnPosition;
+        do
         {
-            Instantiate(resourceNode, new Vector3(Random.Range(-width, width), Random.Range(-height, height)),
-                Quaternion.identity);
-        }
+            spawnPosition = new Vector3(Random.Range(-7f, -1f), Random.Range(-9f, 9f), 0f);
+        } while (Vector3.Distance(spawnPosition, basePrefab.transform.position) < minDistanceToBase);
+
+        Instantiate(resourceNode, spawnPosition, Quaternion.identity);
     }
+}
     // Function to spawn a character at a given position.
     private void SpawnCharacter(Vector3 spawnPosition)
     {
