@@ -31,28 +31,24 @@ public class GathererAI : MonoBehaviour
             //Target distance from unit and target gold
             float distance = Vector2.Distance(transform.position, target.position);
 
-            if (distance <= stopDistance) //Collect gold if within range
+            if (distance <= stopDistance) //Check if within range of target
             {
-                rigBod2D.velocity = Vector2.zero; //Stop moving when collecting gold at node
-                
-                if (collectGold())
+                rigBod2D.velocity = Vector2.zero; //Stop moving when collecting/depositing gold
+                if (target == gathererController.baseTransform())
                 {
-                    findClosestGoldResource(); //Find a new gold resource
+                    StartCoroutine(gathererController.DepositGold());
+                    if (!gathererController.depositState()) // switch target once deposit is done
+                    {
+                        findClosestGoldResource();
+                    }
                 }
                 else
                 {
-                    if (!gathererController.depositState())
+                    findClosestGoldResource();
+                    StartCoroutine(gathererController.GatherGold(target));
+                    if (!gathererController.gatherState()) // switch target once gather is done
                     {
-                        Coroutine depositing = StartCoroutine(gathererController.DepositGold());
-                        if (depositing != null) // if depositing is not done
-                        {
-                            target = gathererController.baseTransform(); // set target to base
-                        }
-                        else
-                        {
-                            Debug.Log("done depositing");
-                            findClosestGoldResource(); //Find a new gold resource
-                        }
+                        target = gathererController.baseTransform();
                     }
                 }
             }
@@ -67,19 +63,6 @@ public class GathererAI : MonoBehaviour
         {
             rigBod2D.velocity = Vector2.zero; //Stop moving if there is no target
         }
-    }
-
-    private bool collectGold() // returns true if gold needs to be collected/is being collected, false otherwise
-    {
-        if (target == gathererController.baseTransform() || gathererController.depositState()) return false;
-        if (gathererController.gatherState()) return true;
-        Coroutine gathering = StartCoroutine(gathererController.GatherGold(target));
-        if (gathering == null)
-        {
-            Debug.Log("done gathering");
-        }
-        return gathering != null;
-
     }
 
     private void findClosestGoldResource() // sets target to closest gold resource
