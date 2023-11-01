@@ -18,19 +18,19 @@ public class GameController : MonoBehaviour
     {
         var height = mainCamera.orthographicSize;   // set height using the camera orthographic size
         var width = mainCamera.aspect * height;     // set width using camera aspect ratio and height
-        InitializeResourceNodes(width, height);
+        GameObject baseInstance = SpawnBase(new Vector3(-14, 0, 1)); // Spawn the base at a specific position when the game starts.
+        InitializeResourceNodes(width, height, baseInstance);
                 // Example: Spawn a character at a specific position when the game starts.
         SpawnCharacter(new Vector3(-8, 0, 0));
-         SpawnBase(new Vector3(-14, 0, 0)); // Spawn the base
     }
-    private void SpawnBase(Vector3 spawnPosition)
+    private GameObject SpawnBase(Vector3 spawnPosition)
 {
     Debug.Log("Base spawned at position: " + spawnPosition);
-    Instantiate(basePrefab, spawnPosition, Quaternion.identity);
+    return Instantiate(basePrefab, spawnPosition, Quaternion.identity);
 }
     //function to initialize gold manager
 
-private void InitializeResourceNodes(float width, float height)
+private void InitializeResourceNodes(float width, float height, GameObject baseInstance)
 {
     // Initialize Resource Nodes at random locations in a rectangular area
     for (int i = 0; i < resourceNodeAmount; i++)
@@ -39,7 +39,7 @@ private void InitializeResourceNodes(float width, float height)
         do
         {
             spawnPosition = new Vector3(Random.Range(-7f, -1f), Random.Range(-9f, 9f), 0f);
-        } while (Vector3.Distance(spawnPosition, basePrefab.transform.position) < minDistanceToBase);
+        } while (Vector3.Distance(spawnPosition, baseInstance.transform.position) < minDistanceToBase);
 
         Instantiate(resourceNode, spawnPosition, Quaternion.identity);
     }
