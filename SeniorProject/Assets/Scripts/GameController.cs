@@ -18,7 +18,7 @@ public class GameController : MonoBehaviour
     {
         var height = mainCamera.orthographicSize;   // set height using the camera orthographic size
         var width = mainCamera.aspect * height;     // set width using camera aspect ratio and height
-        GameObject baseInstance = SpawnBase(new Vector3(-14, 0, 1)); // Spawn the base at a specific position when the game starts.
+        GameObject baseInstance = SpawnBase(new Vector3(-14, 0, 0)); // Spawn the base at a specific position when the game starts.
         InitializeResourceNodes(width, height, baseInstance);
                 // Example: Spawn a character at a specific position when the game starts.
         SpawnCharacter(new Vector3(-8, 0, 0));

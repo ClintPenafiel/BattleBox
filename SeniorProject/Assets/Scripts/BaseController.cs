@@ -18,7 +18,7 @@ public class BaseController : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
             return;
         }
 
@@ -58,4 +58,6 @@ public class BaseController : MonoBehaviour
             GoldManager.DepositGold(-num);
         }
     }
+
+
 }
