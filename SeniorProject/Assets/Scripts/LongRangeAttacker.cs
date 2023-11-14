@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,8 +14,9 @@ public class LongRangeAttacker : MonoBehaviour
     [SerializeField] private int projectileSpeed;
     [SerializeField] private float projectileYOffset;
     [SerializeField] public LayerMask targetLayer;
+    [SerializeField] private float detectRange = 50.0f;   //Range of which the unit can detect
     private bool isAttacking;
-    private float detectRange = 50.0f;   //Range of which the unit can detect
+    
 
     private Transform target;
     // Start is called before the first frame update
@@ -47,6 +49,17 @@ public class LongRangeAttacker : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        // check if layers are different (player/enemy) and if collider is a projectile
+        if (other.gameObject.layer != gameObject.layer && other.gameObject.CompareTag("Projectile"))
+        {
+            // destroy projectile
+            Destroy(other.gameObject);
+            // TODO deplete health here
+        }
+    }
+
     public void attack()
     {
         if (!isAttacking)
@@ -55,8 +68,8 @@ public class LongRangeAttacker : MonoBehaviour
             position.y += projectileYOffset;
             Vector3 angle = position - target.position;
             angle.z = Mathf.Rad2Deg * (Mathf.Atan2(angle.y, angle.x)) + 90;
-            GameObject launched_projectile = Instantiate(projectile, position, Quaternion.Euler(0, 0, angle.z));
-            launched_projectile.GetComponent<ProjectileController>().Launch(target, projectileSpeed);
+            GameObject launchedProjectile = Instantiate(projectile, position, Quaternion.Euler(0, 0, angle.z));
+            launchedProjectile.GetComponent<ProjectileController>().Launch(target, projectileSpeed, projectileYOffset);
             isAttacking = true;
             StartCoroutine("attackCooldown");
         }

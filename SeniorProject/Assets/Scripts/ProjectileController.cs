@@ -24,9 +24,11 @@ public class ProjectileController : MonoBehaviour
         rigBod2D.velocity = moveDirection * projectileSpeed;
     }
 
-    public void Launch(Transform target, int speed)
+    public void Launch(Transform target, int speed, float yOffset)
     {
-        moveDirection = (target.position - transform.position).normalized;
+        var position = target.position;
+        position.y += yOffset;
+        moveDirection = (position - transform.position).normalized;
         projectileSpeed = speed;
     }
 
