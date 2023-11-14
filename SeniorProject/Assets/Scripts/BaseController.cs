@@ -8,7 +8,6 @@ public class BaseController : MonoBehaviour
     public static BaseController Instance { get; private set; }
 
     public GoldManager GoldManager { get; private set; }
-    public Text GoldText;
 
     private void Awake()
     {
@@ -25,17 +24,10 @@ public class BaseController : MonoBehaviour
         GoldManager = FindObjectOfType<GoldManager>();
     }
 
+
     private void Update()
     {
-        UpdateGoldText();
-    }
-
-    private void UpdateGoldText()
-    {
-        if (GoldText != null && GoldManager != null)
-        {
-            GoldText.text = "Gold: " + GoldManager.currentGold;
-        }
+        
     }
 
     public int GetGold()

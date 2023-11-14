@@ -13,7 +13,6 @@ public class GathererAI : MonoBehaviour
     public LayerMask goldResourceLayer; //Layer containing gold resources
     public Transform target;//Reference to currently target
     private Rigidbody2D rigBod2D;       //Component for moving
-    
     // Start is called before the first frame update
     void Start()
     {

@@ -14,7 +14,6 @@ public GoldManager goldManager;
     void Start()
     {
         StartCoroutine("GenerateGold");
-        goldManager = FindObjectOfType<GoldManager>();
     }
 
     // Update is called once per frame
@@ -39,7 +38,6 @@ public GoldManager goldManager;
         gold = Mathf.Clamp(gold - num, 0, maxGold);
         if (difference < 0) return num + difference;
 
-        goldManager.currentGold += num;
         return num;
     }
 }

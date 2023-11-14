@@ -29,7 +29,6 @@ public class GoldManager : MonoBehaviour
 //it should add all the gold that the gatherer has to the base when it reaches the base
     public void DepositGold(int gold)
     {
-        currentGold = currentGold-1;
         currentGold += gold;
         UpdateGoldText(); 
     }

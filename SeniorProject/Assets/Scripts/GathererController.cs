@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GathererController : MonoBehaviour
 {
-    [SerializeField] private int carryCapacity = 9;
+    [SerializeField] private int carryCapacity = 10;
     [SerializeField] private int goldCarried;
     [SerializeField] private int gatherSpeed = 1;
     [SerializeField] private int depositSpeed = 1;
@@ -31,22 +32,18 @@ public class GathererController : MonoBehaviour
 
     public IEnumerator GatherGold(Transform targetGoldResource)
     {
-        while (goldCarried < carryCapacity)
+        if (!isGathering && goldCarried < carryCapacity)
         {
-            Debug.Log($"gatherer has {goldCarried} gold");
-            if (!isGathering && goldCarried < carryCapacity)
-            {
-                isGathering = true;
-                yield return new WaitForSeconds(gatherSpeed);
-                ResourceNodeController resourceScript =
-                    targetGoldResource.gameObject.GetComponent<ResourceNodeController>();
-                int goldGathered = resourceScript.SubtractGold(carryCapacity - goldCarried);
-                goldCarried += goldGathered;
-                isGathering = false;
-            }
-            yield return null;
+            isGathering = true;
+            yield return new WaitForSeconds(gatherSpeed);
+            ResourceNodeController resourceScript =
+                targetGoldResource.gameObject.GetComponent<ResourceNodeController>();
+            int goldGathered = resourceScript.SubtractGold(carryCapacity - goldCarried);
+            goldCarried += goldGathered;
+            isGathering = false;
         }
-        
+        Debug.Log($"gatherer has {goldCarried} gold");
+        yield return null;
     }
     
     public bool depositState()
@@ -56,21 +53,17 @@ public class GathererController : MonoBehaviour
 
     public IEnumerator DepositGold() //this is where the gold is added to the base from the gatherer when it reaches the base with gold it should update the gold text, and add the gold to the base 
     {
-        while (goldCarried > 0)
+        if (!isDepositing && goldCarried > 0)
         {
-            if (!isDepositing && goldCarried > 0)
-            {
-                isDepositing = true;
-                yield return new WaitForSeconds(depositSpeed);
-                BaseController.Instance.AddGold(goldCarried);
-                Debug.Log($"base has {BaseController.Instance.GetGold()} gold");
-                goldCarried = 0;
-                isDepositing = false;
-            }
-            yield return null;
+            isDepositing = true;
+            yield return new WaitForSeconds(depositSpeed);
+            BaseController.Instance.AddGold(goldCarried);
+            goldCarried = 0;
+            isDepositing = false;
         }
+        Debug.Log($"base has {BaseController.Instance.GetGold()} gold");
+        yield return null;
     }
-    
     
     public Transform baseTransform()
     {
