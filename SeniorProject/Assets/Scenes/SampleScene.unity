@@ -7989,7 +7989,8 @@ MonoBehaviour:
   resourceNode: {fileID: 8148687777916893203, guid: 0b3152df9eef3d046b866caaaf022257, type: 3}
   resourceNodeAmount: 5
   characterPrefab: {fileID: 1000013034572668, guid: 389c7e1a1dabb4e1e917001420b89c9a, type: 3}
-  basePrefab: {fileID: 3321941528205386242, guid: 4dd8406cd1b40314fbc380f7f28c69ff, type: 3}
+  playerBasePrefab: {fileID: 3321941528205386242, guid: 4dd8406cd1b40314fbc380f7f28c69ff, type: 3}
+  enemyBasePrefab: {fileID: 5073539186474338932, guid: a616506222f0b654c8e015d07f44afad, type: 3}
   minDistanceToBase: 5
 --- !u!114 &1278262891
 MonoBehaviour:

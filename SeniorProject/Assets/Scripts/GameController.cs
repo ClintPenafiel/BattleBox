@@ -9,7 +9,8 @@ public class GameController : MonoBehaviour
     [SerializeField] private int resourceNodeAmount;
     // Start is called before the first frame update
     [SerializeField] private GameObject characterPrefab; // Reference to the character prefab in the Unity editor.
-    [SerializeField] private GameObject basePrefab; // Reference to the base prefab in the Unity editor.
+    [SerializeField] private GameObject playerBasePrefab; // Reference to the player base prefab in the Unity editor.
+    [SerializeField] private GameObject enemyBasePrefab; // Reference to the enemy base prefab in the Unity editor.
     //GoldManager reference
     private GoldManager goldManager;
     [SerializeField] private float minDistanceToBase = 10f; // Minimum distance between a resource node and the base. the smaller the number the closer the resource node will be to the base
@@ -18,19 +19,21 @@ public class GameController : MonoBehaviour
     {
         var height = mainCamera.orthographicSize;   // set height using the camera orthographic size
         var width = mainCamera.aspect * height;     // set width using camera aspect ratio and height
-        GameObject baseInstance = SpawnBase(new Vector3(-14, 0, 0)); // Spawn the base at a specific position when the game starts.
-        InitializeResourceNodes(width, height, baseInstance);
+        GameObject playerBase = SpawnBase(playerBasePrefab, new Vector3(-14, 0, 0)); // Spawn the base at a specific position when the game starts.
+        GameObject enemyBase = SpawnBase(enemyBasePrefab, new Vector3(14, 0, 0)); // Spawn the base at a specific position when the game starts.
+
+        InitializeResourceNodes(7f, 9f, playerBase.transform.localPosition, enemyBase.transform.localPosition);
                 // Example: Spawn a character at a specific position when the game starts.
         SpawnCharacter(new Vector3(-8, 0, 0));
     }
-    private GameObject SpawnBase(Vector3 spawnPosition)
+    private GameObject SpawnBase(GameObject basePrefab, Vector3 spawnPosition)
 {
     Debug.Log("Base spawned at position: " + spawnPosition);
     return Instantiate(basePrefab, spawnPosition, Quaternion.identity);
 }
     //function to initialize gold manager
 
-private void InitializeResourceNodes(float width, float height, GameObject baseInstance)
+private void InitializeResourceNodes(float width, float height, Vector3 playerBasePosition, Vector3 enemyBasePosition)
 {
     // Initialize Resource Nodes at random locations in a rectangular area
     for (int i = 0; i < resourceNodeAmount; i++)
@@ -38,8 +41,8 @@ private void InitializeResourceNodes(float width, float height, GameObject baseI
         Vector3 spawnPosition;
         do
         {
-            spawnPosition = new Vector3(Random.Range(-7f, -1f), Random.Range(-9f, 9f), 0f);
-        } while (Vector3.Distance(spawnPosition, baseInstance.transform.position) < minDistanceToBase);
+            spawnPosition = new Vector3(Random.Range(-width, width), Random.Range(-height, height), 0f);
+        } while (Vector3.Distance(spawnPosition, playerBasePosition) < minDistanceToBase && Vector3.Distance(spawnPosition, enemyBasePosition) < minDistanceToBase);
 
         Instantiate(resourceNode, spawnPosition, Quaternion.identity);
     }
