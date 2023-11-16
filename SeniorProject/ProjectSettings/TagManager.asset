@@ -9,6 +9,7 @@ TagManager:
   - GoldResource
   - GoldText
   - Projectile
+  - Boundary
   layers:
   - Default
   - TransparentFX
