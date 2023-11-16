@@ -13,13 +13,13 @@ public class UnitSpawner : MonoBehaviour
     public int tankCost = 15;
 
     public BaseController baseController;
-
+    public Transform spawnPoint;
     public void SpawnGatherer()
     {
         if (baseController.GetGold() >= gathererCost)
         {
             baseController.AddGold(-gathererCost);
-            Instantiate(gathererPrefab);
+            Instantiate(gathererPrefab, spawnPoint.position, spawnPoint.rotation);
         }
         else
         {
@@ -32,7 +32,7 @@ public class UnitSpawner : MonoBehaviour
     if (baseController.GetGold() >= meleeCost)
     {
         baseController.AddGold(-meleeCost);
-        Instantiate(meleePrefab);
+        Instantiate(meleePrefab, spawnPoint.position, spawnPoint.rotation);
     }
     else
     {
@@ -45,7 +45,7 @@ public void SpawnRange()
     if (baseController.GetGold() >= rangeCost)
     {
         baseController.AddGold(-rangeCost);
-        Instantiate(rangePrefab);
+        Instantiate(rangePrefab, spawnPoint.position, spawnPoint.rotation);
     }
     else
     {
