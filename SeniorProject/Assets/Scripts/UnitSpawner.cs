@@ -58,7 +58,7 @@ public void SpawnTank()
     if (baseController.GetGold() >= tankCost)
     {
         baseController.AddGold(-tankCost);
-        Instantiate(tankPrefab);
+        Instantiate(tankPrefab, spawnPoint.position, spawnPoint.rotation);
     }
     else
     {
