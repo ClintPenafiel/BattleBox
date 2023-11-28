@@ -35,8 +35,8 @@ public class GathererAgent : Agent
         foreach (var resource in resourceNodes)
         {
             Vector3 spawnPosition;
-            Vector3 playerBasePos = new Vector3(14, 0, 0);
-            Vector3 enemyBasePos = new Vector3(-14, 0, 0);
+            Vector3 playerBasePos = new Vector3(-14, 0, 0);
+            Vector3 enemyBasePos = new Vector3(14, 0, 0);
             int minDistToBase = 5;
             do
             {

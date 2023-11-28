@@ -24,7 +24,7 @@ public class GameController : MonoBehaviour
 
         InitializeResourceNodes(7f, 9f, playerBase.transform.localPosition, enemyBase.transform.localPosition);
                 // Example: Spawn a character at a specific position when the game starts.
-        SpawnCharacter(new Vector3(-8, 0, 0));
+        SpawnCharacter(new Vector3(14, 0, 0));
     }
     private GameObject SpawnBase(GameObject basePrefab, Vector3 spawnPosition)
 {
