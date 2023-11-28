@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8442699996326595656}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: calf_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 75122349142306094}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: forearm_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 816606170091366546}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Foot_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8746981632625074196}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Base (hip)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,7 +137,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7179255326165790569}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -168,7 +168,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 768697547103811034}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Foot_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -199,7 +199,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6499614795336414401}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: forearm_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -230,7 +230,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2528907059310052172}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: bicep_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -263,7 +263,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 933820147898385627}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: thigh_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -295,7 +295,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2645819114683034037}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -328,7 +328,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3584053269778376204}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: thigh_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -366,7 +366,7 @@ GameObject:
   - component: {fileID: 4063730332377163751}
   - component: {fileID: 1500038733923100479}
   - component: {fileID: 9119388424105557597}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Heros_Infantry_28
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -559,6 +559,7 @@ MonoBehaviour:
   gatherSpeed: 1
   depositSpeed: 1
   mainBase: {fileID: 6087101027349912522, guid: 4dd8406cd1b40314fbc380f7f28c69ff, type: 3}
+  player: 1
 --- !u!1 &8545480013556822632
 GameObject:
   m_ObjectHideFlags: 0
@@ -568,7 +569,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8781812676730673622}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: bicep_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -600,7 +601,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6801997153245742681}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: calf_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
