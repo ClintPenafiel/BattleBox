@@ -3,66 +3,101 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+public enum GathererState
+{
+    Idle,
+    Gathering,
+    Depositing
+}
+
 public class GathererAI : MonoBehaviour
 {
     [SerializeField] private GathererController gathererController;
-    public float speed = 5f;            //Movement speed of the unit
-    //public float collectRange = 1.0f;   //Range of which the unit gathers gold
-    public float stopDistance = 0.5f;   //Distance to stop when collecting gold
-    public float detectRange = 50.0f;   //Range of which the unit can detect gold
-    public LayerMask goldResourceLayer; //Layer containing gold resources
-    public Transform target;//Reference to currently target
-    private Rigidbody2D rigBod2D;       //Component for moving
-    // Start is called before the first frame update
+    public float speed = 5f;
+    public float stopDistance = 0.5f;
+    public float detectRange = 50.0f;
+    public LayerMask goldResourceLayer;
+    public Transform target;
+    private Rigidbody2D rigBod2D;
+    public Animator animator;
+    private GathererState state = GathererState.Idle;
+
     void Start()
     {
         rigBod2D = GetComponent<Rigidbody2D>();
-        findClosestGoldResource(); 
-        //If user does not tell unit to go to a specific resource, the unit will
-        //go to the closest one
+        animator = GetComponent<Animator>();
+        gathererController = GetComponent<GathererController>();
+        findClosestGoldResource();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (target != null) //Check for target
+        if (state == GathererState.Idle)
         {
-            //Target distance from unit and target gold
-            float distance = Vector2.Distance(transform.position, target.position);
+            findClosestGoldResource();
+            state = GathererState.Gathering;
+        }
+        else if (state == GathererState.Gathering)
+        {
+            float distance = target != null ? Vector2.Distance(transform.position, target.position) : Mathf.Infinity;
 
-            if (distance <= stopDistance) //Check if within range of target
+            if (distance <= stopDistance)
             {
-                rigBod2D.velocity = Vector2.zero; //Stop moving when collecting/depositing gold
-                if (target == gathererController.baseTransform())
+                rigBod2D.velocity = Vector2.zero;
+                animator.SetBool("isMoving", false);
+
+            if (!gathererController.gatherState() && gathererController.GetGoldCarried() < gathererController.GetCarryCapacity())
+            {
+                StartCoroutine(gathererController.GatherGold(target));
+                animator.SetBool("isMining", true);
+            }
+
+            if (gathererController.GetGoldCarried() >= gathererController.GetCarryCapacity())
+            {
+                target = gathererController.baseTransform();
+                state = GathererState.Depositing;
+            }
+            }
+            else
+            {
+                Vector2 moveDirection = target != null ? (target.position - transform.position).normalized : Vector2.zero;
+
+                rigBod2D.velocity = moveDirection * speed;
+                animator.SetBool("isMoving", true);
+                animator.SetBool("isMining", false);
+            }
+        }
+        else if (state == GathererState.Depositing)
+        {
+            float distance = target != null ? Vector2.Distance(transform.position, target.position) : Mathf.Infinity;
+
+            if (distance <= stopDistance)
+            {
+                rigBod2D.velocity = Vector2.zero;
+                animator.SetBool("isMoving", false);
+
+                if (!gathererController.depositState())
                 {
                     StartCoroutine(gathererController.DepositGold());
-                    if (!gathererController.depositState()) // switch target once deposit is done
-                    {
-                        findClosestGoldResource();
-                    }
+                    animator.SetBool("isMining", false);
                 }
-                else
+
+                if (gathererController.depositState())
                 {
-                    findClosestGoldResource();
-                    StartCoroutine(gathererController.GatherGold(target));
-                    if (!gathererController.gatherState()) // switch target once gather is done
-                    {
-                        target = gathererController.baseTransform();
-                    }
+                    state = GathererState.Idle;
                 }
             }
             else
             {
-                //Move towards target
-                Vector2 moveDirection = (target.position - transform.position).normalized;
+                Vector2 moveDirection = target != null ? (target.position - transform.position).normalized : Vector2.zero;
+
                 rigBod2D.velocity = moveDirection * speed;
+                animator.SetBool("isMoving", true);
+                animator.SetBool("isMining", false);
             }
         }
-        else
-        {
-            rigBod2D.velocity = Vector2.zero; //Stop moving if there is no target
-        }
     }
+
 
     private void findClosestGoldResource() // sets target to closest gold resource
     {

@@ -13,7 +13,14 @@ public class GathererController : MonoBehaviour
     
     private bool isGathering = false;
     private bool isDepositing = false;
-
+    public int GetGoldCarried()
+    {
+        return goldCarried;
+    }
+    public int GetCarryCapacity()
+    {
+        return carryCapacity;
+    }
     // Start is called before the first frame update
     void Start()
     {
