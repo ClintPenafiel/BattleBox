@@ -21,8 +21,15 @@ public class GathererAgent : Agent
     
     public override void OnEpisodeBegin()
     {
-        // reset position of gatherer
-        transform.localPosition = new Vector3(Random.Range(-7f, 7f), Random.Range(-9f, 9f), 0);
+        reward = 0;
+        if (training)
+        {
+            ResetResourceNodePositions();
+        }
+    }
+
+    private void ResetResourceNodePositions()
+    {
         // reset positions of resources
         resourceNodes = GameObject.FindGameObjectsWithTag("GoldResource");
         foreach (var resource in resourceNodes)
@@ -34,7 +41,9 @@ public class GathererAgent : Agent
             do
             {
                 spawnPosition = new Vector3(Random.Range(-7f, 7f), Random.Range(-9f, 9f), 0f);
-            } while (Vector3.Distance(spawnPosition, playerBasePos) < minDistToBase && Vector3.Distance(spawnPosition, enemyBasePos) < minDistToBase);
+            } while (Vector3.Distance(spawnPosition, playerBasePos) < minDistToBase &&
+                     Vector3.Distance(spawnPosition, enemyBasePos) < minDistToBase);
+
             resource.transform.localPosition = spawnPosition;
         }
     }
@@ -80,6 +89,11 @@ public class GathererAgent : Agent
         if (other.CompareTag("Boundary"))
         {
             SetReward(-1000000);
+            if (training)
+            {
+                // reset position of gatherer agent
+                transform.localPosition = new Vector3(Random.Range(0, 4f), Random.Range(-9f, 7f), 0);
+            }
             EndEpisode();
         }
     }

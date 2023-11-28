@@ -90,7 +90,7 @@ PrefabInstance:
       objectReference: {fileID: 4325855981344158652, guid: a616506222f0b654c8e015d07f44afad, type: 3}
     - target: {fileID: 4269778517494932860, guid: 389c7e1a1dabb4e1e917001420b89c9a, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4940803107457323838, guid: 389c7e1a1dabb4e1e917001420b89c9a, type: 3}
       propertyPath: m_Constraints
@@ -116,6 +116,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1000013034572668, guid: 389c7e1a1dabb4e1e917001420b89c9a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5309960124825531463}
+    - targetCorrespondingSourceObject: {fileID: 1000013034572668, guid: 389c7e1a1dabb4e1e917001420b89c9a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4540102738835166506}
   m_SourcePrefab: {fileID: 100100000, guid: 389c7e1a1dabb4e1e917001420b89c9a, type: 3}
 --- !u!1 &1554820535011478092 stripped
 GameObject:
@@ -137,13 +140,18 @@ MonoBehaviour:
   agentParameters:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
-  MaxStep: 0
+  MaxStep: 1000
+  gathererController: {fileID: 3373500102571517004}
   baseTransform: {fileID: 4325855981344158652, guid: a616506222f0b654c8e015d07f44afad, type: 3}
   speed: 5
   goldResourceLayer:
     serializedVersion: 2
     m_Bits: 8
+  enemyBaseLayer:
+    serializedVersion: 2
+    m_Bits: 128
   stopDistance: 0.5
+  training: 1
 --- !u!114 &4106199907323239335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,7 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 18
+    VectorObservationSize: 4
     NumStackedVectorObservations: 1
     m_ActionSpec:
       m_NumContinuousActions: 2
@@ -166,10 +174,10 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: e3b23edbd376c43499141647e6b41522, type: 3}
+  m_Model: {fileID: 0}
   m_InferenceDevice: 0
   m_BehaviorType: 0
-  m_BehaviorName: MoveToGold
+  m_BehaviorName: CollectGold
   TeamId: 0
   m_UseChildSensors: 1
   m_UseChildActuators: 1
@@ -223,3 +231,30 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.9}
   m_Size: {x: 0.5, y: 1.7}
   m_Direction: 0
+--- !u!114 &4540102738835166506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554820535011478092}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2902496c0120472b90269f94a0aec7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Record: 0
+  NumStepsToRecord: 0
+  DemonstrationName: CollectGold
+  DemonstrationDirectory: Demos
+--- !u!114 &3373500102571517004 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4269778517494932860, guid: 389c7e1a1dabb4e1e917001420b89c9a, type: 3}
+  m_PrefabInstance: {fileID: 1553839213712359728}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554820535011478092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82152b026d915954f9f4d98b4bf328f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
