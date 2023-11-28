@@ -34,12 +34,25 @@ public class BaseController : MonoBehaviour
     {
         return GoldManager != null ? GoldManager.currentGold : 0;
     }
+    
+    public int GetEnemyGold()
+    {
+        return GoldManager != null ? GoldManager.currentEnemyGold : 0;
+    }
 
     public void AddGold(int num)
     {
         if (GoldManager != null)
         {
             GoldManager.DepositGold(num);
+        }
+    }
+    
+    public void AddEnemyGold(int num)
+    {
+        if (GoldManager != null)
+        {
+            GoldManager.DepositEnemyGold(num);
         }
     }
 

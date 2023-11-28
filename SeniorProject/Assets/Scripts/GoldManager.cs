@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,9 @@ public class GoldManager : MonoBehaviour
     public static GoldManager instance;
     public int startingGold = 0;
     public int currentGold = 0;
+    public int startingEnemyGold = 0;
+    public int currentEnemyGold = 0;
+    [SerializeField] private bool showEnemyGold;
     public UnityEngine.UI.Text goldText;
 
     void Start()
@@ -21,8 +25,9 @@ public class GoldManager : MonoBehaviour
     {
         Destroy(gameObject);
     }
-
-    currentGold = startingGold; 
+    
+    currentGold = startingGold;
+    currentEnemyGold = startingEnemyGold;
     goldText = GameObject.Find("GoldText").GetComponent<Text>(); 
 
 }
@@ -32,9 +37,20 @@ public class GoldManager : MonoBehaviour
         currentGold += gold;
         UpdateGoldText(); 
     }
+    
+    public void DepositEnemyGold(int gold)
+    {
+        currentEnemyGold += gold;
+        UpdateGoldText();
+    }
 
     private void UpdateGoldText()
     {
-        goldText.text = "Gold: " + currentGold;
+        String goldDisplayText = "Gold: " + currentGold;
+        if (showEnemyGold)
+        {
+            goldDisplayText += " Enemy Gold: " + currentEnemyGold;
+        }
+        goldText.text = goldDisplayText;
     }
 }
