@@ -9,20 +9,21 @@ public class LongRangeAttacker : MonoBehaviour
     [SerializeField] private int cost;
     [SerializeField] private int speed;
     [SerializeField] private int strength;
-    [SerializeField] private int attacksPerSecond;
-    [SerializeField] private int attackRange;
-    [SerializeField] private int projectileSpeed;
+    [SerializeField] private float attacksPerSecond;
+    [SerializeField] private float attackRange;
+    [SerializeField] private float projectileSpeed;
     [SerializeField] private float projectileYOffset;
     [SerializeField] public LayerMask targetLayer;
     [SerializeField] private float detectRange = 50.0f;   //Range of which the unit can detect
+    private Rigidbody2D rigBod2D;
     private bool isAttacking;
     
-
     private Transform target;
     // Start is called before the first frame update
     void Start()
     {
-        findClosestTarget();
+        rigBod2D = GetComponent<Rigidbody2D>();
+        FindClosestTarget();
         Debug.Log($"{target}");
     }
 
@@ -36,10 +37,13 @@ public class LongRangeAttacker : MonoBehaviour
 
             if (distance <= attackRange) //Attack if within range
             {
+                rigBod2D.velocity = Vector2.zero;
                 Debug.Log($"attacking {target}");
-                attack();
+                Attack();
             } else
             {
+                Vector2 moveDirection = target != null ? (target.position - transform.position).normalized : Vector2.zero;
+                rigBod2D.velocity = moveDirection * speed;
                 Debug.Log("target out of range");
             }
         }
@@ -60,7 +64,7 @@ public class LongRangeAttacker : MonoBehaviour
         }
     }
 
-    public void attack()
+    public void Attack()
     {
         if (!isAttacking)
         {
@@ -69,13 +73,13 @@ public class LongRangeAttacker : MonoBehaviour
             Vector3 angle = position - target.position;
             angle.z = Mathf.Rad2Deg * (Mathf.Atan2(angle.y, angle.x)) + 90;
             GameObject launchedProjectile = Instantiate(projectile, position, Quaternion.Euler(0, 0, angle.z));
-            launchedProjectile.GetComponent<ProjectileController>().Launch(target, projectileSpeed, projectileYOffset);
+            launchedProjectile.GetComponent<ProjectileController>().Launch(target, projectileSpeed, projectileYOffset, attackRange);
             isAttacking = true;
-            StartCoroutine("attackCooldown");
+            StartCoroutine("AttackCooldown");
         }
     }
 
-    private void findClosestTarget() // sets target to closest target
+    private void FindClosestTarget() // sets target to closest target
     {
         Collider2D[] targets = Physics2D.OverlapCircleAll(transform.position, detectRange, targetLayer);
 
@@ -95,7 +99,7 @@ public class LongRangeAttacker : MonoBehaviour
         target = closestTarget;
     }
 
-    private IEnumerator attackCooldown()
+    private IEnumerator AttackCooldown()
     {
         yield return new WaitForSeconds(1 / attacksPerSecond);
         isAttacking = false;
