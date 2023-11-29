@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class HealthSystem : MonoBehaviour
 {
-    //[SerializeField] public int maxHealth = 100;
-    public int maxHealth;
+    [SerializeField] public int maxHealth = 100;
+    //public int maxHealth;
     private int currHealth;
     
     // Start is called before the first frame update
@@ -15,20 +15,20 @@ public class HealthSystem : MonoBehaviour
         
     }
 
-    public void StartingHealth(UnitType unitType)
+    public void StartingHealth(unitType unitType)
     {
         switch (unitType)
         {
-            case UnitType.Gatherer:
+            case unitType.Gatherer:
                 maxHealth = 20;
                 break;
-            case UnitType.Range:
+            case unitType.Range:
                 maxHealth = 30;
                 break;
-            case UnitType.Melee:
+            case unitType.Melee:
                 maxHealth = 50;
                 break;
-            case UnitType.Tank:
+            case unitType.Tank:
                 maxHealth = 75;
                 break;
             default:
@@ -56,12 +56,24 @@ public class HealthSystem : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        // check if layers are different (player/enemy) and if collider is a projectile
+        if (other.gameObject.layer != gameObject.layer && other.gameObject.CompareTag("Projectile"))
+        {
+            // destroy projectile
+            Destroy(other.gameObject);
+            // TODO deplete health here
+            
+        }
+    }
+
     void Die()
     {
         Destroy(gameObject);
     }
 
-    public enum UnitType
+    public enum unitType
     {
         Gatherer,
         Melee,
