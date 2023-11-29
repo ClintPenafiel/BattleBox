@@ -33,7 +33,13 @@ public class ProjectileController : MonoBehaviour
         moveDirection = (position - transform.position).normalized;
         projectileSpeed = speed;
         damage = damageValue;
+        // Destroy projectile once it travels maxDistance units
         Destroy(gameObject, 1 / speed * maxDistance);
+    }
+
+    public int GetDamage()
+    {
+        return damage;
     }
 
 }
