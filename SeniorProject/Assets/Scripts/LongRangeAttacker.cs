@@ -6,7 +6,6 @@ using UnityEngine;
 public class LongRangeAttacker : MonoBehaviour
 {
     [SerializeField] private GameObject projectile;
-    [SerializeField] private int cost;
     [SerializeField] private int speed;
     [SerializeField] private int strength;
     [SerializeField] private float attacksPerSecond;
@@ -24,7 +23,6 @@ public class LongRangeAttacker : MonoBehaviour
     {
         rigBod2D = GetComponent<Rigidbody2D>();
         FindClosestTarget();
-        Debug.Log($"{target}");
     }
 
     // Update is called once per frame
@@ -38,18 +36,16 @@ public class LongRangeAttacker : MonoBehaviour
             if (distance <= attackRange) //Attack if within range
             {
                 rigBod2D.velocity = Vector2.zero;
-                Debug.Log($"attacking {target}");
                 Attack();
-            } else
+            } else //if not within attack range, move towards target
             {
                 Vector2 moveDirection = target != null ? (target.position - transform.position).normalized : Vector2.zero;
                 rigBod2D.velocity = moveDirection * speed;
-                Debug.Log("target out of range");
             }
         }
         else
         {
-            Debug.Log("target is null");
+            //Debug.Log("target is null");
         }
     }
 
@@ -58,10 +54,17 @@ public class LongRangeAttacker : MonoBehaviour
         // check if layers are different (player/enemy) and if collider is a projectile
         if (other.gameObject.layer != gameObject.layer && other.gameObject.CompareTag("Projectile"))
         {
-            // destroy projectile
-            Destroy(other.gameObject);
+            GameObject o;
             // TODO deplete health here
+            (o = other.gameObject).GetComponent<ProjectileController>().GetDamage(); // get damage value of projectile
+            // destroy projectile
+            Destroy(o);
         }
+    }
+
+    public void SetTarget(Transform targetTransform)
+    {
+        target = targetTransform;
     }
 
     public void Attack()
@@ -73,7 +76,7 @@ public class LongRangeAttacker : MonoBehaviour
             Vector3 angle = position - target.position;
             angle.z = Mathf.Rad2Deg * (Mathf.Atan2(angle.y, angle.x)) + 90;
             GameObject launchedProjectile = Instantiate(projectile, position, Quaternion.Euler(0, 0, angle.z));
-            launchedProjectile.GetComponent<ProjectileController>().Launch(target, projectileSpeed, projectileYOffset, attackRange);
+            launchedProjectile.GetComponent<ProjectileController>().Launch(target, projectileSpeed, projectileYOffset, attackRange, strength);
             isAttacking = true;
             StartCoroutine("AttackCooldown");
         }

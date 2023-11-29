@@ -70,7 +70,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 5698582921590687236, guid: ba28423e759530748b8353ee233600bc, type: 3}
-  cost: 0
   speed: 1
   strength: 0
   attacksPerSecond: 1

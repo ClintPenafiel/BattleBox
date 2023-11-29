@@ -11,9 +11,12 @@ public class ProjectileController : MonoBehaviour
 
     private Vector2 moveDirection;
 
+    private int damage;
+
     // Start is called before the first frame update
     void Start()
     {
+        damage = 0;
         rigBod2D = GetComponent<Rigidbody2D>();
     }
 
@@ -23,13 +26,20 @@ public class ProjectileController : MonoBehaviour
         rigBod2D.velocity = moveDirection * projectileSpeed;
     }
 
-    public void Launch(Transform target, float speed, float yOffset, float maxDistance)
+    public void Launch(Transform target, float speed, float yOffset, float maxDistance, int damageValue)
     {
         var position = target.position;
         position.y += yOffset;
         moveDirection = (position - transform.position).normalized;
         projectileSpeed = speed;
+        damage = damageValue;
+        // Destroy projectile once it travels maxDistance units
         Destroy(gameObject, 1 / speed * maxDistance);
+    }
+
+    public int GetDamage()
+    {
+        return damage;
     }
 
 }
