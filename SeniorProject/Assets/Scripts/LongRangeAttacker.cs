@@ -73,7 +73,7 @@ public class LongRangeAttacker : MonoBehaviour
             Vector3 angle = position - target.position;
             angle.z = Mathf.Rad2Deg * (Mathf.Atan2(angle.y, angle.x)) + 90;
             GameObject launchedProjectile = Instantiate(projectile, position, Quaternion.Euler(0, 0, angle.z));
-            launchedProjectile.GetComponent<ProjectileController>().Launch(target, projectileSpeed, projectileYOffset, attackRange);
+            launchedProjectile.GetComponent<ProjectileController>().Launch(target, projectileSpeed, projectileYOffset, attackRange, strength);
             isAttacking = true;
             StartCoroutine("AttackCooldown");
         }
