@@ -7221,6 +7221,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingGold: 0
   currentGold: 0
+  startingEnemyGold: 0
+  currentEnemyGold: 0
+  showEnemyGold: 1
   goldText: {fileID: 2107662016}
 --- !u!1 &1278262888
 GameObject:
@@ -7296,6 +7299,7 @@ MonoBehaviour:
   rangeCost: 8
   tankCost: 15
   baseController: {fileID: 1278262892}
+  spawnPoint: {fileID: 0}
 --- !u!114 &1278262892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7376,7 +7380,7 @@ MonoBehaviour:
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 'Gold: 0'
 --- !u!222 &2107662017

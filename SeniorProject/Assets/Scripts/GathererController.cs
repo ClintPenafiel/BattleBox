@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -10,17 +11,11 @@ public class GathererController : MonoBehaviour
     [SerializeField] private int gatherSpeed = 1;
     [SerializeField] private int depositSpeed = 1;
     [SerializeField] private Transform mainBase;
+    [SerializeField] private bool player;
     
     private bool isGathering = false;
     private bool isDepositing = false;
-    public int GetGoldCarried()
-    {
-        return goldCarried;
-    }
-    public int GetCarryCapacity()
-    {
-        return carryCapacity;
-    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +31,21 @@ public class GathererController : MonoBehaviour
     {
         return isGathering;
     }
+    
+    public bool depositState()
+    {
+        return isDepositing;
+    }
+
+    public int GetGoldCarried()
+    {
+        return goldCarried;
+    }
+    
+    public int GetCarryCapacity()
+    {
+        return carryCapacity;
+    }
 
     public IEnumerator GatherGold(Transform targetGoldResource)
     {
@@ -49,26 +59,33 @@ public class GathererController : MonoBehaviour
             goldCarried += goldGathered;
             isGathering = false;
         }
-        Debug.Log($"gatherer has {goldCarried} gold");
+        String message = "player";
+        if (!player)
+        {
+            message = "enemy";
+        }
+        Debug.Log($"{message} gatherer has {goldCarried} gold");
         yield return null;
     }
     
-    public bool depositState()
-    {
-        return isDepositing;
-    }
-
     public IEnumerator DepositGold() //this is where the gold is added to the base from the gatherer when it reaches the base with gold it should update the gold text, and add the gold to the base 
     {
         if (!isDepositing && goldCarried > 0)
         {
             isDepositing = true;
             yield return new WaitForSeconds(depositSpeed);
-            BaseController.Instance.AddGold(goldCarried);
+            if (player) // add gold for player
+            {
+                BaseController.Instance.AddGold(goldCarried);
+            }
+            else // add gold for enemy
+            {
+                BaseController.Instance.AddEnemyGold(goldCarried);
+            }
             goldCarried = 0;
             isDepositing = false;
         }
-        Debug.Log($"base has {BaseController.Instance.GetGold()} gold");
+        Debug.Log($"Player has {BaseController.Instance.GetGold()} gold. Enemy has {BaseController.Instance.GetEnemyGold()}.");
         yield return null;
     }
     

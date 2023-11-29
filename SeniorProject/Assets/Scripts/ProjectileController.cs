@@ -7,29 +7,29 @@ public class ProjectileController : MonoBehaviour
 {
     private Rigidbody2D rigBod2D;
 
-    private int projectileSpeed;
+    private float projectileSpeed;
 
     private Vector2 moveDirection;
+
     // Start is called before the first frame update
     void Start()
     {
-        GameObject o;
-        rigBod2D = (o = gameObject).GetComponent<Rigidbody2D>();
-        Destroy(o, 3);
+        rigBod2D = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         rigBod2D.velocity = moveDirection * projectileSpeed;
     }
 
-    public void Launch(Transform target, int speed, float yOffset)
+    public void Launch(Transform target, float speed, float yOffset, float maxDistance)
     {
         var position = target.position;
         position.y += yOffset;
         moveDirection = (position - transform.position).normalized;
         projectileSpeed = speed;
+        Destroy(gameObject, 1 / speed * maxDistance);
     }
 
 }
