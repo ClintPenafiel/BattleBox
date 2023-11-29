@@ -41,12 +41,11 @@ public class LongRangeAttacker : MonoBehaviour
             {
                 Vector2 moveDirection = target != null ? (target.position - transform.position).normalized : Vector2.zero;
                 rigBod2D.velocity = moveDirection * speed;
-                Debug.Log("target out of range");
             }
         }
         else
         {
-            Debug.Log("target is null");
+            //Debug.Log("target is null");
         }
     }
 
