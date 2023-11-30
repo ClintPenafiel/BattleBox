@@ -19,7 +19,7 @@ public class UniHealthSystem : MonoBehaviour
 
     void Start()
     {
-        InitializeHealth();
+        InitializeHealth(); //Doesn't completely work
     }
 
     private void InitializeHealth()
