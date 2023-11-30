@@ -9,4 +9,10 @@ public class MainMenu : MonoBehaviour
    {
       SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
    }
+
+   public void Quit()
+   {
+      Debug.Log("QUIT");
+      Application.Quit(); //This does not show in Unity editor, hence the above line
+   }
 }
