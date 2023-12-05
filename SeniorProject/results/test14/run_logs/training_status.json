@@ -1,0 +1,65 @@
+{
+    "CollectGold": {
+        "checkpoints": [
+            {
+                "steps": 199990,
+                "file_path": "results\\test14\\CollectGold\\CollectGold-199990.onnx",
+                "reward": -3.225806451612903,
+                "creation_time": 1701307529.647619,
+                "auxillary_file_paths": [
+                    "results\\test14\\CollectGold\\CollectGold-199990.pt"
+                ]
+            },
+            {
+                "steps": 299937,
+                "file_path": "results\\test14\\CollectGold\\CollectGold-299937.onnx",
+                "reward": -39.285714285714285,
+                "creation_time": 1701308123.9409535,
+                "auxillary_file_paths": [
+                    "results\\test14\\CollectGold\\CollectGold-299937.pt"
+                ]
+            },
+            {
+                "steps": 399976,
+                "file_path": "results\\test14\\CollectGold\\CollectGold-399976.onnx",
+                "reward": -17.0,
+                "creation_time": 1701308806.0063503,
+                "auxillary_file_paths": [
+                    "results\\test14\\CollectGold\\CollectGold-399976.pt"
+                ]
+            },
+            {
+                "steps": 499981,
+                "file_path": "results\\test14\\CollectGold\\CollectGold-499981.onnx",
+                "reward": 2.8205128205128207,
+                "creation_time": 1701309542.7187138,
+                "auxillary_file_paths": [
+                    "results\\test14\\CollectGold\\CollectGold-499981.pt"
+                ]
+            },
+            {
+                "steps": 500045,
+                "file_path": "results\\test14\\CollectGold\\CollectGold-500045.onnx",
+                "reward": 2.8205128205128207,
+                "creation_time": 1701309542.895712,
+                "auxillary_file_paths": [
+                    "results\\test14\\CollectGold\\CollectGold-500045.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 500045,
+            "file_path": "results\\test14\\CollectGold.onnx",
+            "reward": 2.8205128205128207,
+            "creation_time": 1701309542.895712,
+            "auxillary_file_paths": [
+                "results\\test14\\CollectGold\\CollectGold-500045.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.1.0.dev0",
+        "torch_version": "1.13.1+cu117"
+    }
+}

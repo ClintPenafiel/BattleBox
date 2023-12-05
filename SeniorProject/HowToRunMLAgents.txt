@@ -1,0 +1,10 @@
+open anaconda prompt (to run conda environment)
+open unity project (to train)
+
+conda activate mlagents
+
+mlagents-learn
+
+mlagents-learn config\GathererAgentExeTraining.yaml
+
+tensorboard --logdir results

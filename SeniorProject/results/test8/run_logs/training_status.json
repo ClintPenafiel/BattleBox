@@ -1,0 +1,38 @@
+{
+    "CollectGold": {
+        "checkpoints": [
+            {
+                "steps": 4965,
+                "file_path": "results\\test8\\CollectGold\\CollectGold-4965.onnx",
+                "reward": -999983.6212121212,
+                "creation_time": 1700475631.5516915,
+                "auxillary_file_paths": [
+                    "results\\test8\\CollectGold\\CollectGold-4965.pt"
+                ]
+            },
+            {
+                "steps": 6042,
+                "file_path": "results\\test8\\CollectGold\\CollectGold-6042.onnx",
+                "reward": -999983.7375,
+                "creation_time": 1700475637.800281,
+                "auxillary_file_paths": [
+                    "results\\test8\\CollectGold\\CollectGold-6042.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 6042,
+            "file_path": "results\\test8\\CollectGold.onnx",
+            "reward": -999983.7375,
+            "creation_time": 1700475637.800281,
+            "auxillary_file_paths": [
+                "results\\test8\\CollectGold\\CollectGold-6042.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.1.0.dev0",
+        "torch_version": "1.13.1+cu117"
+    }
+}

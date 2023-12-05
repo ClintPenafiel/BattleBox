@@ -1,0 +1,26 @@
+Mono path[0] = 'C:/Users/AnKhoa/Desktop/School/CS/Final Semester/Senior Project/BattleBox/SeniorProject/Builds/SeniorProject_Data/Managed'
+Mono config path = 'C:/Users/AnKhoa/Desktop/School/CS/Final Semester/Senior Project/BattleBox/SeniorProject/Builds/MonoBleedingEdge/etc'
+[Physics::Module] Initialized MultithreadedJobDispatcher with 7 workers.
+Initialize engine version: 2022.3.9f1 (ea401c316338)
+[Subsystems] Discovering subsystems at path C:/Users/AnKhoa/Desktop/School/CS/Final Semester/Senior Project/BattleBox/SeniorProject/Builds/SeniorProject_Data/UnitySubsystems
+GfxDevice: creating device client; threaded=1; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: Intel(R) UHD Graphics 620 (ID=0x5917)
+    Vendor:   Intel
+    VRAM:     4020 MB
+    Driver:   31.0.101.2121
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.614 seconds
+- Finished resetting the current domain, in  0.005 seconds
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 1.431200 ms
+Base spawned at position: (-14.00, 0.00, 0.00)
+Base spawned at position: (14.00, 0.00, 0.00)
+Character spawned at position: (-8.00, 0.00, 0.00)
+Fewer observations (2) made than vector observation size (17). The observations will be padded.
+Fewer observations (2) made than vector observation size (17). The observations will be padded.
+Fewer observations (2) made than vector observation size (17). The observations will be padded.
+Fewer observations (2) made than vector observation size (17). The observations will be padded.

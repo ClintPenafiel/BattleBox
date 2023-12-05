@@ -1,0 +1,29 @@
+{
+    "CollectGold": {
+        "checkpoints": [
+            {
+                "steps": 2629,
+                "file_path": "results\\test2\\CollectGold\\CollectGold-2629.onnx",
+                "reward": 16.615384615384617,
+                "creation_time": 1700446122.5432014,
+                "auxillary_file_paths": [
+                    "results\\test2\\CollectGold\\CollectGold-2629.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 2629,
+            "file_path": "results\\test2\\CollectGold.onnx",
+            "reward": 16.615384615384617,
+            "creation_time": 1700446122.5432014,
+            "auxillary_file_paths": [
+                "results\\test2\\CollectGold\\CollectGold-2629.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.1.0.dev0",
+        "torch_version": "1.13.1+cu117"
+    }
+}

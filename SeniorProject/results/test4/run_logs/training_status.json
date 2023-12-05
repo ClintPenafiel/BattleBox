@@ -1,0 +1,47 @@
+{
+    "CollectGold": {
+        "checkpoints": [
+            {
+                "steps": 251574,
+                "file_path": "results\\test4\\CollectGold\\CollectGold-251574.onnx",
+                "reward": 4.552631578947368,
+                "creation_time": 1700456798.608689,
+                "auxillary_file_paths": [
+                    "results\\test4\\CollectGold\\CollectGold-251574.pt"
+                ]
+            },
+            {
+                "steps": 257710,
+                "file_path": "results\\test4\\CollectGold\\CollectGold-257710.onnx",
+                "reward": 6.590909090909091,
+                "creation_time": 1700457041.038119,
+                "auxillary_file_paths": [
+                    "results\\test4\\CollectGold\\CollectGold-257710.pt"
+                ]
+            },
+            {
+                "steps": 258329,
+                "file_path": "results\\test4\\CollectGold\\CollectGold-258329.onnx",
+                "reward": -1.0,
+                "creation_time": 1700457674.6411757,
+                "auxillary_file_paths": [
+                    "results\\test4\\CollectGold\\CollectGold-258329.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 258329,
+            "file_path": "results\\test4\\CollectGold.onnx",
+            "reward": -1.0,
+            "creation_time": 1700457674.6411757,
+            "auxillary_file_paths": [
+                "results\\test4\\CollectGold\\CollectGold-258329.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.1.0.dev0",
+        "torch_version": "1.13.1+cu117"
+    }
+}
