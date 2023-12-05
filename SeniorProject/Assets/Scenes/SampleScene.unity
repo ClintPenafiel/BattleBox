@@ -7199,8 +7199,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -816.96, y: -387.73}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -815.4287, y: -366.59}
+  m_SizeDelta: {x: 162.4501, y: 95.3378}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &598028046
 MonoBehaviour:
@@ -7332,8 +7332,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -612.76, y: -387.87}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -611.22864, y: -366.54}
+  m_SizeDelta: {x: 162.4502, y: 95.3378}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &750009216
 MonoBehaviour:
@@ -7499,7 +7499,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Tank
+  m_Text: 'Tank
+
+    Cost: 15 Gold'
 --- !u!222 &792856124
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7544,8 +7546,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -202.4, y: -387.3}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -212, y: -366.6}
+  m_SizeDelta: {x: 154.2829, y: 95.3378}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &806056261
 MonoBehaviour:
@@ -7806,7 +7808,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Range
+  m_Text: 'Range
+
+    Cost: 8 Gold'
 --- !u!222 &1060863917
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7885,7 +7889,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Melee
+  m_Text: 'Melee
+
+    Cost: 10 Gold'
 --- !u!222 &1205787570
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7964,7 +7970,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Gatherer
+  m_Text: 'Gatherer
+
+    Cost: 2 Gold'
 --- !u!222 &1217841008
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8039,9 +8047,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gathererPrefab: {fileID: 6599646309785900978, guid: 3ab0a033935167043a552bed2d932e6e, type: 3}
-  meleePrefab: {fileID: 1000012663239756, guid: 13c470c5b8dcd4854834911f7e0a9a6c, type: 3}
+  meleePrefab: {fileID: 7870076380857034721, guid: 45e2eb45174ddf5439e7693d4d7cbadd, type: 3}
   rangePrefab: {fileID: 1000010854855540, guid: a3c1faf915dc240bca8ed7566d46910c, type: 3}
-  tankPrefab: {fileID: 1000010755293042, guid: 978fa2fb617654f5eaeff9da6fc7d116, type: 3}
+  tankPrefab: {fileID: 3955172781677329071, guid: 7e9977136b31a4140a0a89122b13fbe5, type: 3}
   gathererCost: 2
   meleeCost: 10
   rangeCost: 8
@@ -8198,8 +8206,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -407, y: -388.1}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -408.53137, y: -366.6}
+  m_SizeDelta: {x: 157.5498, y: 95.3378}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2022861132
 MonoBehaviour:
