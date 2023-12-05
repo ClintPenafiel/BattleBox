@@ -1,5 +1,13 @@
 using UnityEngine;
 
+public enum UnitType
+{
+    None,
+    Gatherer,
+    Melee,
+    Range,
+    Tank
+}
 public class UnitSpawner : MonoBehaviour
 {
     public GameObject gathererPrefab;
@@ -14,12 +22,15 @@ public class UnitSpawner : MonoBehaviour
 
     public BaseController baseController;
     public Transform spawnPoint;
+    private UnitType placingUnit = UnitType.None;
+    private GameObject unitPreview;
     public void SpawnGatherer()
     {
         if (baseController.GetGold() >= gathererCost)
         {
             baseController.AddGold(-gathererCost);
-            Instantiate(gathererPrefab, spawnPoint.position, spawnPoint.rotation);
+            placingUnit = UnitType.Gatherer;
+            unitPreview = Instantiate(gathererPrefab);
         }
         else
         {
@@ -32,7 +43,8 @@ public class UnitSpawner : MonoBehaviour
     if (baseController.GetGold() >= meleeCost)
     {
         baseController.AddGold(-meleeCost);
-        Instantiate(meleePrefab, spawnPoint.position, spawnPoint.rotation);
+        placingUnit = UnitType.Melee;
+        unitPreview = Instantiate(meleePrefab);
     }
     else
     {
@@ -45,7 +57,8 @@ public void SpawnRange()
     if (baseController.GetGold() >= rangeCost)
     {
         baseController.AddGold(-rangeCost);
-        Instantiate(rangePrefab, spawnPoint.position, spawnPoint.rotation);
+        placingUnit = UnitType.Range;
+        unitPreview = Instantiate(rangePrefab);
     }
     else
     {
@@ -58,11 +71,27 @@ public void SpawnTank()
     if (baseController.GetGold() >= tankCost)
     {
         baseController.AddGold(-tankCost);
-        Instantiate(tankPrefab, spawnPoint.position, spawnPoint.rotation);
+        placingUnit = UnitType.Tank;
+        unitPreview = Instantiate(tankPrefab);
     }
     else
     {
         Debug.Log("Not enough gold to spawn Tank");
+    }
+}
+
+void Update() 
+{
+    if (placingUnit != UnitType.None)
+    {
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        unitPreview.transform.position = new Vector3(mousePosition.x, mousePosition.y, 0);
+        if (Input.GetMouseButtonDown(0))
+        {
+            Instantiate(unitPreview, unitPreview.transform.position, Quaternion.identity);
+            placingUnit = UnitType.None;
+            Destroy(unitPreview);
+        }
     }
 }
 }
