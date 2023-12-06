@@ -26,11 +26,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1000013034572668, guid: 389c7e1a1dabb4e1e917001420b89c9a, type: 3}
       propertyPath: m_Name
-      value: Enemy Priest
+      value: Enemy Gatherer
       objectReference: {fileID: 0}
     - target: {fileID: 1000013034572668, guid: 389c7e1a1dabb4e1e917001420b89c9a, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013034572668, guid: 389c7e1a1dabb4e1e917001420b89c9a, type: 3}
+      propertyPath: m_TagString
+      value: EnemyGatherer
       objectReference: {fileID: 0}
     - target: {fileID: 1000013226060160, guid: 389c7e1a1dabb4e1e917001420b89c9a, type: 3}
       propertyPath: m_Layer
@@ -43,6 +47,14 @@ PrefabInstance:
     - target: {fileID: 1000013871091346, guid: 389c7e1a1dabb4e1e917001420b89c9a, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013296727282, guid: 389c7e1a1dabb4e1e917001420b89c9a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013296727282, guid: 389c7e1a1dabb4e1e917001420b89c9a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4000013296727282, guid: 389c7e1a1dabb4e1e917001420b89c9a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -116,6 +128,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1000013034572668, guid: 389c7e1a1dabb4e1e917001420b89c9a, type: 3}
       insertIndex: -1
       addedObject: {fileID: -2140289574783062487}
+    - targetCorrespondingSourceObject: {fileID: 1000013034572668, guid: 389c7e1a1dabb4e1e917001420b89c9a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -6350449335297000869}
   m_SourcePrefab: {fileID: 100100000, guid: 389c7e1a1dabb4e1e917001420b89c9a, type: 3}
 --- !u!1 &1554820535011478092 stripped
 GameObject:
@@ -208,6 +223,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+--- !u!114 &-6350449335297000869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554820535011478092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f9c7ff24f65a73469c11f434c200461, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3373500102571517004 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4269778517494932860, guid: 389c7e1a1dabb4e1e917001420b89c9a, type: 3}
