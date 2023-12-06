@@ -1,18 +1,19 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class HealthSystem : MonoBehaviour
 {
-    [SerializeField] public int maxHealth = 100;
+    [SerializeField] private int maxHealth = 100;
     //public int maxHealth;
     private int currHealth;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        currHealth = maxHealth;
     }
 
     public void StartingHealth(unitType unitType)
@@ -48,7 +49,7 @@ public class HealthSystem : MonoBehaviour
     public void TakeDmg(int dmgAmount)
     {
         currHealth -= dmgAmount;
-        
+        Debug.Log($"current health {currHealth}, damage: {dmgAmount}");
         //If unit dies, destroy the gameObject
         if (currHealth <= 0)
         {
@@ -61,15 +62,25 @@ public class HealthSystem : MonoBehaviour
         // check if layers are different (player/enemy) and if collider is a projectile
         if (other.gameObject.layer != gameObject.layer && other.gameObject.CompareTag("Projectile"))
         {
+            GameObject o;
+            int damage = (o = other.gameObject).GetComponent<ProjectileController>().GetDamage(); // get damage value of projectile
+            TakeDmg(damage);
             // destroy projectile
-            Destroy(other.gameObject);
-            // TODO deplete health here
-            
+            Destroy(o);
         }
     }
 
     void Die()
     {
+        if (gameObject.CompareTag("Base"))
+        {
+            Debug.Log("Player lose");
+            // TODO trigger game over
+        }
+        if (gameObject.CompareTag("EnemyBase"))
+        {
+            Debug.Log("Player win");
+        }
         Destroy(gameObject);
     }
 

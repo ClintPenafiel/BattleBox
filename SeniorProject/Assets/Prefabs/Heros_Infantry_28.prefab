@@ -366,6 +366,8 @@ GameObject:
   - component: {fileID: 4063730332377163751}
   - component: {fileID: 1500038733923100479}
   - component: {fileID: 9119388424105557597}
+  - component: {fileID: 8060266058274095520}
+  - component: {fileID: -743291079980427672}
   m_Layer: 6
   m_Name: Heros_Infantry_28
   m_TagString: Untagged
@@ -560,6 +562,54 @@ MonoBehaviour:
   depositSpeed: 1
   mainBase: {fileID: 6087101027349912522, guid: 4dd8406cd1b40314fbc380f7f28c69ff, type: 3}
   player: 1
+--- !u!114 &8060266058274095520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6599646309785900978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cd4da0fd27b5d5439c9ca5eed38dbd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 1000
+--- !u!70 &-743291079980427672
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6599646309785900978}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1.0752, y: 1.3999999}
+  m_Direction: 0
 --- !u!1 &8545480013556822632
 GameObject:
   m_ObjectHideFlags: 0

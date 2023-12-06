@@ -8,7 +8,8 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject resourceNode;
     [SerializeField] private int resourceNodeAmount;
     // Start is called before the first frame update
-    [SerializeField] private GameObject characterPrefab; // Reference to the character prefab in the Unity editor.
+    [SerializeField] private GameObject startingPlayerUnit; // Reference to the starting player unit in the Unity editor.
+    [SerializeField] private GameObject startingEnemyUnit; // Reference to the starting player unit in the Unity editor.
     [SerializeField] private GameObject playerBasePrefab; // Reference to the player base prefab in the Unity editor.
     [SerializeField] private GameObject enemyBasePrefab; // Reference to the enemy base prefab in the Unity editor.
     //GoldManager reference
@@ -24,7 +25,9 @@ public class GameController : MonoBehaviour
 
         InitializeResourceNodes(7f, 9f, playerBase.transform.localPosition, enemyBase.transform.localPosition);
                 // Example: Spawn a character at a specific position when the game starts.
-        SpawnCharacter(new Vector3(-14, 0, 0));
+        SpawnCharacter(startingPlayerUnit, new Vector3(-14, 0, 0));
+        SpawnCharacter(startingEnemyUnit, new Vector3(14, 0, 0));
+
     }
     private GameObject SpawnBase(GameObject basePrefab, Vector3 spawnPosition)
 {
@@ -35,6 +38,8 @@ public class GameController : MonoBehaviour
 
 private void InitializeResourceNodes(float width, float height, Vector3 playerBasePosition, Vector3 enemyBasePosition)
 {
+    // spawn nodes above a certain y position
+    float minimumY = -5f;
     // Initialize Resource Nodes at random locations in a rectangular area
     for (int i = 0; i < resourceNodeAmount; i++)
     {
@@ -42,16 +47,16 @@ private void InitializeResourceNodes(float width, float height, Vector3 playerBa
         do
         {
             spawnPosition = new Vector3(Random.Range(-width, width), Random.Range(-height, height), 0f);
-        } while (Vector3.Distance(spawnPosition, playerBasePosition) < minDistanceToBase && Vector3.Distance(spawnPosition, enemyBasePosition) < minDistanceToBase);
+        } while (spawnPosition.y < minimumY || Vector3.Distance(spawnPosition, playerBasePosition) < minDistanceToBase && Vector3.Distance(spawnPosition, enemyBasePosition) < minDistanceToBase);
 
         Instantiate(resourceNode, spawnPosition, Quaternion.identity);
     }
 }
     // Function to spawn a character at a given position.
-    private void SpawnCharacter(Vector3 spawnPosition)
+    private void SpawnCharacter(GameObject unit, Vector3 spawnPosition)
     {
         Debug.Log("Character spawned at position: " + spawnPosition);
-    Instantiate(characterPrefab, spawnPosition, Quaternion.identity);
+    Instantiate(unit, spawnPosition, Quaternion.identity);
     }
     // Update is called once per frame
     void Update()

@@ -10,6 +10,8 @@ TagManager:
   - GoldText
   - Projectile
   - Boundary
+  - Base
+  - EnemyBase
   layers:
   - Default
   - TransparentFX

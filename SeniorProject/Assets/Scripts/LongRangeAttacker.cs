@@ -45,7 +45,7 @@ public class LongRangeAttacker : MonoBehaviour
         }
         else
         {
-            //Debug.Log("target is null");
+            FindClosestTarget();
         }
     }
 
