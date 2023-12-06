@@ -14,8 +14,9 @@ GameObject:
   - component: {fileID: 8875142406007679915}
   - component: {fileID: 4397543787739605373}
   - component: {fileID: 8669855175192034227}
+  - component: {fileID: -8918902157092338950}
   m_Layer: 6
-  m_Name: Peasant
+  m_Name: Ranged
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -71,7 +72,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 5698582921590687236, guid: ba28423e759530748b8353ee233600bc, type: 3}
-  speed: 1
+  speed: 2
   strength: 100
   attacksPerSecond: 1
   attackRange: 5
@@ -156,6 +157,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &-8918902157092338950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000010854855540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f9c7ff24f65a73469c11f434c200461, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1000011210365404
 GameObject:
   m_ObjectHideFlags: 0

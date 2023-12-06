@@ -12,6 +12,7 @@ TagManager:
   - Boundary
   - Base
   - EnemyBase
+  - EnemyGatherer
   layers:
   - Default
   - TransparentFX

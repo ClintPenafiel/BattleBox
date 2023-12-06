@@ -91,7 +91,8 @@ public class LongRangeAttacker : MonoBehaviour
 
         foreach (Collider2D nearest in targets)
         {
-            float distance = Vector2.Distance(transform.position, nearest.transform.position);
+            if (nearest.CompareTag("Projectile")) continue; // make sure nearest collider is not a projectile
+            var distance = Vector2.Distance(transform.position, nearest.transform.position);
 
             if (distance < closestDistance)
             {

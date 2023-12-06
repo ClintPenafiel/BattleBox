@@ -396,7 +396,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 303537012}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -8489,7 +8489,9 @@ MonoBehaviour:
   enemies:
   - {fileID: 1554820535011478092, guid: cead290daa7f6444d91ed807ed5a9107, type: 3}
   - {fileID: 3201632519942997982, guid: d8c5bf4b6894cee4d8d7d487a409c75a, type: 3}
-  enemyCosts: 020000000a000000
+  - {fileID: 3343100071589260332, guid: 7f0107b36df2fe242aecde4166fa9ff8, type: 3}
+  - {fileID: 5277738842675981881, guid: 090a6c95123153147bad6180046b0626, type: 3}
+  enemyCosts: 020000000a000000080000000f000000
   spawnPoint: {fileID: 1927878277}
 --- !u!1 &1278262888
 GameObject:
@@ -8558,9 +8560,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gathererPrefab: {fileID: 6599646309785900978, guid: 3ab0a033935167043a552bed2d932e6e, type: 3}
-  meleePrefab: {fileID: 7870076380857034721, guid: 45e2eb45174ddf5439e7693d4d7cbadd, type: 3}
+  meleePrefab: {fileID: 831897262457554417, guid: 8ec2ca2208595ec40a783ad55e60cbef, type: 3}
   rangePrefab: {fileID: 1000010854855540, guid: c217f3bc9c983c44f916bb487e65954f, type: 3}
-  tankPrefab: {fileID: 3955172781677329071, guid: 7e9977136b31a4140a0a89122b13fbe5, type: 3}
+  tankPrefab: {fileID: 2759969719243759346, guid: a349c79d0afef414a8fc5b097ae6b675, type: 3}
   gathererCost: 2
   meleeCost: 10
   rangeCost: 8
@@ -9178,9 +9180,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 520365902}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 200, y: -265.73}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 200, y: 75}
   m_SizeDelta: {x: 322.5327, y: 71.6608}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2107662016
