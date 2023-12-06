@@ -62,15 +62,6 @@ public class GathererAI : MonoBehaviour
             {
                 Vector2 moveDirection = target != null ? (target.position - transform.position).normalized : Vector2.zero;
 
-                //Flip the sprite to face the direction of movement
-                if (moveDirection.x > 0)
-                {
-                    transform.localScale = new Vector3(-1, 1, 1);
-                }
-                else if (moveDirection.x < 0)
-                {
-                    transform.localScale = new Vector3(1, 1, 1);
-                }
                 rigBod2D.velocity = moveDirection * speed;
                 animator.SetBool("isMoving", true);
                 animator.SetBool("isMining", false);
@@ -99,15 +90,6 @@ public class GathererAI : MonoBehaviour
             else
             {
                 Vector2 moveDirection = target != null ? (target.position - transform.position).normalized : Vector2.zero;
-                //Flip the sprite to face the direction of movement
-                if (moveDirection.x > 0)
-                {
-                    transform.localScale = new Vector3(-1, 1, 1);
-                }
-                else if (moveDirection.x < 0)
-                {
-                    transform.localScale = new Vector3(1, 1, 1);
-                }
                 rigBod2D.velocity = moveDirection * speed;
                 animator.SetBool("isMoving", true);
                 animator.SetBool("isMining", false);

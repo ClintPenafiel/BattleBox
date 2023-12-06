@@ -27,9 +27,7 @@ public class SpriteFlipper : MonoBehaviour
     {
         facingLeft = !facingLeft;
         var localScale = myTransform.localScale;
-        Vector3 flippedScale = localScale;
-        flippedScale.x = localScale.x * -1;
-        localScale = flippedScale;
+        localScale.x *= -1;
         myTransform.localScale = localScale;
     }
 }

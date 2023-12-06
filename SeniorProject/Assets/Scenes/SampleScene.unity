@@ -8192,11 +8192,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c256c34ffbfc86a4c86a9d6aea38dc2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingGold: 0
+  startingGold: 10
   currentGold: 0
-  startingEnemyGold: 0
+  startingEnemyGold: 10
   currentEnemyGold: 0
-  showEnemyGold: 0
+  showEnemyGold: 1
   goldText: {fileID: 2107662016}
 --- !u!1 &1060863914
 GameObject:

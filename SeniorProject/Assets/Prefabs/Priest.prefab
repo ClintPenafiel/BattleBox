@@ -355,7 +355,7 @@ GameObject:
   - component: {fileID: 4269778517494932860}
   - component: {fileID: 4940803107457323838}
   - component: {fileID: -2950399091903890431}
-  - component: {fileID: -7771742965746291114}
+  - component: {fileID: -6344263373758026813}
   m_Layer: 6
   m_Name: Priest
   m_TagString: Untagged
@@ -501,7 +501,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.5, y: 1}
   m_Direction: 0
---- !u!114 &-7771742965746291114
+--- !u!114 &-6344263373758026813
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

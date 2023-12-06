@@ -112,8 +112,15 @@ void Update()
         // place down unit
         if (Input.GetMouseButtonDown(0))
         {
+            unitPreview.GetComponent<Collider2D>().enabled = true; // enable collider again when unit has been placed
             GameObject placedUnit = Instantiate(unitPreview, unitPreview.transform.position, Quaternion.identity);
-            placedUnit.transform.localScale = new Vector3(1, 1, 1); // reset the scale once unit is placed
+            var localScale = transform.localScale;
+            // reset the scale to positive values
+            placedUnit.transform.localScale = new Vector3(Math.Abs(localScale.x), Math.Abs(localScale.y), 1); 
+            if (placingUnit != UnitType.Range) // resize non-ranged units 
+            {
+                placedUnit.transform.localScale = new Vector3(Math.Abs(localScale.x * 1.5f), Math.Abs(localScale.y * 1.5f), 1); 
+            }
             placingUnit = UnitType.None;
             Destroy(unitPreview); // destroy unit preview
         }
