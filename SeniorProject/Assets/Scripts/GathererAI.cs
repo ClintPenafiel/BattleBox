@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -20,12 +21,24 @@ public class GathererAI : MonoBehaviour
     public Transform target;
     private Rigidbody2D rigBod2D;
     public Animator animator;
+    private bool animate;
     private GathererState state = GathererState.Idle;
+    private static readonly int IsMoving = Animator.StringToHash("isMoving"); // set IsMoving based on corresponding hash value
+    private static readonly int IsMining = Animator.StringToHash("isMining"); // set IsMining based on corresponding hash value
 
     void Start()
     {
         rigBod2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        animate = false;
+        foreach (var parameter in animator.parameters)
+        {
+            // animate if the animator has the hash for IsMoving or IsMining
+            if (parameter.nameHash == IsMoving || parameter.nameHash == IsMining)
+            {
+                animate = true;
+            }
+        }
         gathererController = GetComponent<GathererController>();
         findClosestGoldResource();
     }
@@ -44,12 +57,18 @@ public class GathererAI : MonoBehaviour
             if (distance <= stopDistance)
             {
                 rigBod2D.velocity = Vector2.zero;
-                animator.SetBool("isMoving", false);
+                if (animate)
+                {
+                    animator.SetBool(IsMoving, false);
+                }
 
             if (!gathererController.gatherState() && gathererController.GetGoldCarried() < gathererController.GetCarryCapacity())
             {
                 StartCoroutine(gathererController.GatherGold(target));
-                animator.SetBool("isMining", true);
+                if (animate)
+                {
+                    animator.SetBool(IsMining, true);
+                }
             }
 
             if (gathererController.GetGoldCarried() >= gathererController.GetCarryCapacity())
@@ -63,8 +82,12 @@ public class GathererAI : MonoBehaviour
                 Vector2 moveDirection = target != null ? (target.position - transform.position).normalized : Vector2.zero;
 
                 rigBod2D.velocity = moveDirection * speed;
-                animator.SetBool("isMoving", true);
-                animator.SetBool("isMining", false);
+                if (animate)
+                {
+                    animator.SetBool(IsMoving, true);
+                    animator.SetBool(IsMining, false);
+                }
+                
             }
         }
         else if (state == GathererState.Depositing)
@@ -74,12 +97,19 @@ public class GathererAI : MonoBehaviour
             if (distance <= stopDistance)
             {
                 rigBod2D.velocity = Vector2.zero;
-                animator.SetBool("isMoving", false);
+                if (animate)
+                {
+                    animator.SetBool(IsMoving, false);
+                }
+                
 
                 if (!gathererController.depositState())
                 {
                     StartCoroutine(gathererController.DepositGold());
-                    animator.SetBool("isMining", false);
+                    if (animate)
+                    {
+                        animator.SetBool(IsMining, false);
+                    }
                 }
 
                 if (gathererController.depositState())
@@ -91,8 +121,11 @@ public class GathererAI : MonoBehaviour
             {
                 Vector2 moveDirection = target != null ? (target.position - transform.position).normalized : Vector2.zero;
                 rigBod2D.velocity = moveDirection * speed;
-                animator.SetBool("isMoving", true);
-                animator.SetBool("isMining", false);
+                if (animate)
+                {
+                    animator.SetBool(IsMoving, true);
+                    animator.SetBool(IsMining, false);
+                }
             }
         }
     }
