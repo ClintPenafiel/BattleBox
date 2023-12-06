@@ -30,7 +30,7 @@ public class UnitSpawner : MonoBehaviour
         {
             baseController.AddGold(-gathererCost);
             placingUnit = UnitType.Gatherer;
-            unitPreview = Instantiate(gathererPrefab);
+            unitPreview = Instantiate(gathererPrefab, spawnPoint.position, Quaternion.identity);
         }
         else
         {
@@ -44,7 +44,7 @@ public class UnitSpawner : MonoBehaviour
     {
         baseController.AddGold(-meleeCost);
         placingUnit = UnitType.Melee;
-        unitPreview = Instantiate(meleePrefab);
+        unitPreview = Instantiate(meleePrefab, spawnPoint.position, Quaternion.identity);
     }
     else
     {
@@ -58,7 +58,7 @@ public void SpawnRange()
     {
         baseController.AddGold(-rangeCost);
         placingUnit = UnitType.Range;
-        unitPreview = Instantiate(rangePrefab);
+        unitPreview = Instantiate(rangePrefab, spawnPoint.position, Quaternion.identity);
     }
     else
     {
@@ -72,7 +72,7 @@ public void SpawnTank()
     {
         baseController.AddGold(-tankCost);
         placingUnit = UnitType.Tank;
-        unitPreview = Instantiate(tankPrefab);
+        unitPreview = Instantiate(tankPrefab, spawnPoint.position, Quaternion.identity);
     }
     else
     {

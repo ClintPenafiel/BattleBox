@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 95000013227593822}
   - component: {fileID: -6244866400357796208}
   - component: {fileID: 8875142406007679915}
-  - component: {fileID: 4851176350557226151}
+  - component: {fileID: 4397543787739605373}
+  - component: {fileID: 8669855175192034227}
   m_Layer: 6
   m_Name: Peasant
   m_TagString: Untagged
@@ -71,7 +72,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 5698582921590687236, guid: ba28423e759530748b8353ee233600bc, type: 3}
   speed: 1
-  strength: 0
+  strength: 100
   attacksPerSecond: 1
   attackRange: 5
   projectileSpeed: 3
@@ -109,13 +110,26 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.7}
   m_Size: {x: 0.5, y: 1.7}
   m_Direction: 0
---- !u!50 &4851176350557226151
+--- !u!114 &4397543787739605373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000010854855540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cd4da0fd27b5d5439c9ca5eed38dbd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 1000
+--- !u!50 &8669855175192034227
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
