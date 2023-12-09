@@ -9,6 +9,7 @@ public class MainMenu : MonoBehaviour
    public void Play()
    {
       SceneManager.LoadScene("GameScene");
+      FindObjectOfType<GoldManager>().ResetGold();
    }
 
    public void Quit()

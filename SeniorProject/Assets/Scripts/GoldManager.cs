@@ -26,11 +26,17 @@ public class GoldManager : MonoBehaviour
         Destroy(gameObject);
     }
     
-    currentGold = startingGold;
-    currentEnemyGold = startingEnemyGold;
+    ResetGold();
     goldText = GameObject.Find("GoldText").GetComponent<Text>(); 
 
 }
+
+    // resets gold amounts 
+    public void ResetGold()
+    {
+        currentGold = startingGold;
+        currentEnemyGold = startingEnemyGold;
+    }
 //it should add all the gold that the gatherer has to the base when it reaches the base
     public void DepositGold(int gold)
     {
