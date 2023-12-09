@@ -74,13 +74,11 @@ public class HealthSystem : MonoBehaviour
     {
         if (gameObject.CompareTag("Base"))
         {
-            Debug.Log("Player lose");
-            // TODO trigger game over
+            FindObjectOfType<GameEnd>().GameOver();
         }
         if (gameObject.CompareTag("EnemyBase"))
         {
-            Debug.Log("Player win");
-            // TODO trigger player win
+            FindObjectOfType<GameEnd>().GameWin();
         }
         Destroy(gameObject);
     }

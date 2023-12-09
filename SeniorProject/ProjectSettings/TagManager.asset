@@ -13,6 +13,8 @@ TagManager:
   - Base
   - EnemyBase
   - EnemyGatherer
+  - GameOver
+  - GameWin
   layers:
   - Default
   - TransparentFX

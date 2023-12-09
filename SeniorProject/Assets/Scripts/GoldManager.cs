@@ -51,6 +51,10 @@ public class GoldManager : MonoBehaviour
         {
             goldDisplayText += " Enemy Gold: " + currentEnemyGold;
         }
+        if (goldText == null)
+        {
+            goldText = GameObject.Find("GoldText").GetComponent<Text>(); 
+        }
         goldText.text = goldDisplayText;
     }
 }
