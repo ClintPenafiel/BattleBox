@@ -66,6 +66,7 @@ public class GathererAgent : Agent
                 closestPosition = resource.transform.position;
             }
         }
+        // Debug.DrawLine(closestPosition, basePosition);
         sensor.AddObservation(closestPosition);
     }
 
@@ -88,7 +89,8 @@ public class GathererAgent : Agent
     {
         if (other.CompareTag("Boundary"))
         {
-            SetReward(-1000000);
+            SetReward(-100);
+            Debug.Log($"boundary exited");
             if (training)
             {
                 // reset position of gatherer agent

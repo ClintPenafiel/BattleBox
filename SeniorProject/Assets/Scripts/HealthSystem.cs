@@ -49,7 +49,6 @@ public class HealthSystem : MonoBehaviour
     public void TakeDmg(int dmgAmount)
     {
         currHealth -= dmgAmount;
-        Debug.Log($"current health {currHealth}, damage: {dmgAmount}");
         //If unit dies, destroy the gameObject
         if (currHealth <= 0)
         {
@@ -90,4 +89,14 @@ public class HealthSystem : MonoBehaviour
         Range,
         Tank
     }
+
+    public int GetHealth()
+    {
+        return currHealth;
+    }
+    public int GetMaxHealth()
+    {
+        return maxHealth;
+    }
+    
 }

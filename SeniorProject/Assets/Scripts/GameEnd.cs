@@ -6,6 +6,8 @@ public class GameEnd : MonoBehaviour
 {
     private GameObject gameOverScreen;
     private GameObject gameWinScreen;
+
+    private static bool gameFinished;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,15 +15,32 @@ public class GameEnd : MonoBehaviour
         gameWinScreen = GameObject.FindGameObjectWithTag("GameWin");
         gameOverScreen.SetActive(false);
         gameWinScreen.SetActive(false);
+        gameFinished = false;
     }
 
+    // make game over screen visible
     public void GameOver()
     {
-        gameOverScreen.SetActive(true);
+        if (!gameFinished)
+        {
+            gameOverScreen.SetActive(true);
+            gameFinished = true;
+        }
     }
 
+    // make game win screen visible
     public void GameWin()
     {
-        gameWinScreen.SetActive(true);
+        if (!gameFinished)
+        {
+            gameWinScreen.SetActive(true);
+            gameFinished = true;
+        }
+    }
+    
+    // return true if game finished, false otherwise
+    public static bool IsGameFinished()
+    {
+        return gameFinished;
     }
 }

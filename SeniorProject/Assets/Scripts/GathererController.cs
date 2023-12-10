@@ -6,26 +6,15 @@ using UnityEngine;
 
 public class GathererController : MonoBehaviour
 {
-    [SerializeField] private int carryCapacity = 10;
-    [SerializeField] private int goldCarried;
-    [SerializeField] private int gatherSpeed = 1;
-    [SerializeField] private int depositSpeed = 1;
-    [SerializeField] private Transform mainBase;
-    [SerializeField] private bool player;
+    [SerializeField] private int carryCapacity = 10;    // maximum amount of gold the gatherer can carry
+    [SerializeField] private int goldCarried;           // current amount of gold the gatherer can carry
+    [SerializeField] private int gatherSpeed = 1;       // time to wait before the gatherer can collect gold
+    [SerializeField] private int depositSpeed = 1;      // time to wait before the gatherer can deposit gold
+    [SerializeField] private Transform mainBase;        // transform of the base so gatherer knows which base to go to
+    [SerializeField] private bool player;               // whether the gatherer is for the player or enemy
     
     private bool isGathering = false;
     private bool isDepositing = false;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
 
     public bool gatherState()
     {
@@ -46,7 +35,8 @@ public class GathererController : MonoBehaviour
     {
         return carryCapacity;
     }
-
+    
+    // this is where the gold is added to the gatherer when it reaches a gold resource node and takes gold from the resource node until the gold carry capacity has been reached
     public IEnumerator GatherGold(Transform targetGoldResource)
     {
         if (!isGathering && goldCarried < carryCapacity)
@@ -59,16 +49,17 @@ public class GathererController : MonoBehaviour
             goldCarried += goldGathered;
             isGathering = false;
         }
-        String message = "player";
-        if (!player)
-        {
-            message = "enemy";
-        }
-        Debug.Log($"{message} gatherer has {goldCarried} gold");
+        // String message = "player";
+        // if (!player)
+        // {
+        //     message = "enemy";
+        // }
+        // Debug.Log($"{message} gatherer has {goldCarried} gold");
         yield return null;
     }
     
-    public IEnumerator DepositGold() //this is where the gold is added to the base from the gatherer when it reaches the base with gold it should update the gold text, and add the gold to the base 
+    //this is where the gold is added to the base from the gatherer when it reaches the base with gold it should update the gold text, and add the gold to the base
+    public IEnumerator DepositGold() 
     {
         if (!isDepositing && goldCarried > 0)
         {
@@ -85,7 +76,7 @@ public class GathererController : MonoBehaviour
             goldCarried = 0;
             isDepositing = false;
         }
-        Debug.Log($"Player has {BaseController.Instance.GetGold()} gold. Enemy has {BaseController.Instance.GetEnemyGold()}.");
+        // Debug.Log($"Player has {BaseController.Instance.GetGold()} gold. Enemy has {BaseController.Instance.GetEnemyGold()}.");
         yield return null;
     }
     
