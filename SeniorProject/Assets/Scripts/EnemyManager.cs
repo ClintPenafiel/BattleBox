@@ -10,14 +10,12 @@ public class EnemyManager : MonoBehaviour
 
     private Queue<int> spawnQueue;
     private BaseController baseController;
-    private bool gameOver;
     private int numGatherers;
     // Start is called before the first frame update
     void Start()
     {
         spawnQueue = new Queue<int>();
         numGatherers = 1;
-        gameOver = false;
         baseController = FindObjectOfType<BaseController>();
         StartCoroutine(SpawnEnemies());
         StartCoroutine(TrackEnemyGatherers());
@@ -67,15 +65,8 @@ public class EnemyManager : MonoBehaviour
     // attempt to spawn an enemy every second to help reduce amount of computation
     private IEnumerator SpawnEnemies()
     {
-        while (!gameOver)
+        while (!GameEnd.IsGameFinished())
         {
-            // int randIndex = Random.Range(0, enemies.Count - 1);
-            // don't spawn too many gatherers
-            // while (enemies[randIndex].CompareTag("EnemyGatherer") && numGatherers > 0)
-            // {
-            //     randIndex = Random.Range(0, enemies.Count - 1);
-            // }
-            // SpawnEnemy(randIndex);
             if (numGatherers <= 0)
             {
                 SpawnEnemy(true);
@@ -88,7 +79,7 @@ public class EnemyManager : MonoBehaviour
     // keep track of enemy gatherers every second to help reduce amount of computation
     private IEnumerator TrackEnemyGatherers()
     {
-        while (!gameOver)
+        while (!GameEnd.IsGameFinished())
         {
             numGatherers = GameObject.FindGameObjectsWithTag("EnemyGatherer").Length;
             yield return new WaitForSeconds(1);
