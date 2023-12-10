@@ -49,6 +49,8 @@ Player units can only be placed on the player's side, and the player must have e
 
 ## Scripts
 
+Scripts in the repo are located [here](https://github.com/ClintPenafiel/BattleBox/tree/main/SeniorProject/Assets/Scripts)
+
 **SpriteFlipper:**
 Flips the sprites of all units, friendly and enemy.
 
