@@ -9680,7 +9680,7 @@ MonoBehaviour:
   m_Model: {fileID: 5022602860645237092, guid: 992c6846c536a994397d3f5a8c854d3a, type: 3}
   m_InferenceDevice: 0
   m_BehaviorType: 0
-  m_BehaviorName: My Behavior
+  m_BehaviorName: SpawnEnemies
   TeamId: 0
   m_UseChildSensors: 1
   m_UseChildActuators: 1
