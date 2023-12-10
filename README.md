@@ -93,6 +93,8 @@ Allows for the spawn of the different types of units, including the gatherer, me
 **MainMenu:**
 Allows the user to quit the game and start the game.
 
+**GameEnd:**
+Displays the Game Over or Win Screen when the game ends.
 
 ## How to Play
 **Access the Game:**
